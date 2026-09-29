@@ -1,0 +1,355 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444444"/>
+    </marker>
+    <marker id="arrAmb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#E08E0B"/>
+    </marker>
+    <marker id="arrPur" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6A3FA0"/>
+    </marker>
+    <marker id="arrGrn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1E6B23"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+
+  <!-- ================= TITLE ================= -->
+  <text x="960" y="56" text-anchor="middle" font-size="30" font-weight="700" fill="#1A1A1A">Operational Workflow — Regime-Aware Rainfall Post-Processing</text>
+  <text x="960" y="90" text-anchor="middle" font-size="17" fill="#555555">What happens every day once the system is live (repeated for every 00 UTC and 12 UTC model run)</text>
+
+  <!-- ================= LANES ================= -->
+  <rect x="30" y="120" width="1860" height="200" rx="12" fill="#EEF3FB"/>
+  <rect x="30" y="335" width="1860" height="200" rx="12" fill="#F3EEFA"/>
+  <rect x="30" y="550" width="1860" height="200" rx="12" fill="#EAF6F5"/>
+  <rect x="30" y="765" width="1860" height="200" rx="12" fill="#EDF6EE"/>
+
+  <g text-anchor="middle" fill="#FFFFFF" font-weight="700">
+    <rect x="30" y="120" width="160" height="200" rx="12" fill="#1F5FAD"/>
+    <text x="110" y="192" font-size="38">1</text>
+    <text x="110" y="230" font-size="17">RECEIVE</text>
+    <text x="110" y="252" font-size="17">&amp; CHECK</text>
+
+    <rect x="30" y="335" width="160" height="200" rx="12" fill="#6A3FA0"/>
+    <text x="110" y="407" font-size="38">2</text>
+    <text x="110" y="445" font-size="17">PREDICT</text>
+
+    <rect x="30" y="550" width="160" height="200" rx="12" fill="#0F7C7C"/>
+    <text x="110" y="622" font-size="38">3</text>
+    <text x="110" y="660" font-size="17">DELIVER</text>
+
+    <rect x="30" y="765" width="160" height="200" rx="12" fill="#2E7D32"/>
+    <text x="110" y="837" font-size="38">4</text>
+    <text x="110" y="875" font-size="17">LEARN &amp;</text>
+    <text x="110" y="897" font-size="17">IMPROVE</text>
+  </g>
+
+  <!-- ================= LANE 1 : RECEIVE & CHECK ================= -->
+  <!-- start -->
+  <rect x="215" y="180" width="220" height="80" rx="40" fill="#1B3A57"/>
+  <text x="325" y="214" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">NWP run completes</text>
+  <text x="325" y="235" text-anchor="middle" font-size="12.5" fill="#DCE6F0">GFS · NCUM · NEPS, 00/12 UTC</text>
+
+  <!-- O1 -->
+  <rect x="480" y="168" width="220" height="104" rx="12" fill="#1F5FAD"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="590" y="194" font-size="13" font-weight="700" opacity="0.8">O1</text>
+    <text x="590" y="220" font-size="18" font-weight="700">Ingest</text>
+    <text x="590" y="242" font-size="13">auto-starts on arrival</text>
+    <text x="590" y="259" font-size="13">download · checksum</text>
+  </g>
+
+  <!-- O2 decision -->
+  <polygon points="740,220 855,150 970,220 855,290" fill="#1F5FAD"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="855" y="202" font-size="13" font-weight="700" opacity="0.85">O2</text>
+    <text x="855" y="222" font-size="14" font-weight="600">Inputs complete</text>
+    <text x="855" y="240" font-size="14" font-weight="600">&amp; valid?</text>
+  </g>
+
+  <!-- input fallback -->
+  <rect x="1010" y="128" width="200" height="42" rx="8" fill="#FFF4E0" stroke="#E08E0B" stroke-width="2"/>
+  <text x="1110" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#8A5300">Fallback input</text>
+  <text x="1110" y="162" text-anchor="middle" font-size="11.5" fill="#8A5300">previous run / other model</text>
+
+  <!-- O3 -->
+  <rect x="1250" y="168" width="220" height="104" rx="12" fill="#1F5FAD"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="1360" y="194" font-size="13" font-weight="700" opacity="0.8">O3</text>
+    <text x="1360" y="220" font-size="18" font-weight="700">Preprocess</text>
+    <text x="1360" y="242" font-size="13">same code as training</text>
+    <text x="1360" y="259" font-size="13">24 h rain · grid · features</text>
+  </g>
+
+  <!-- time budget note -->
+  <rect x="1515" y="140" width="370" height="160" rx="10" fill="#FFFFFF" stroke="#1F5FAD" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <circle cx="1545" cy="170" r="14" fill="none" stroke="#1F5FAD" stroke-width="2.5"/>
+  <polyline points="1545,161 1545,170 1552,175" fill="none" stroke="#1F5FAD" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="1570" y="176" font-size="16" font-weight="700" fill="#123A6B">Daily time budget</text>
+  <g font-size="13" fill="#333333">
+    <text x="1535" y="206">Lanes 1–3 run automatically within</text>
+    <text x="1535" y="224"><tspan font-weight="700">~60–90 min</tspan> of NWP arrival, before the</text>
+    <text x="1535" y="242">afternoon district forecast is issued.</text>
+    <text x="1535" y="268">Lane 4 runs the next day, once the</text>
+    <text x="1535" y="286">observed rainfall is available.</text>
+  </g>
+
+  <!-- lane 1 arrows -->
+  <g stroke="#444444" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+    <line x1="437" y1="220" x2="477" y2="220"/>
+    <line x1="702" y1="220" x2="737" y2="220"/>
+    <line x1="972" y1="220" x2="1247" y2="220"/>
+    <!-- lane 1 -> lane 2 -->
+    <polyline points="1360,272 1360,327 550,327 550,380"/>
+  </g>
+  <text x="1010" y="212" font-size="13" font-weight="700" fill="#1F5FAD">YES</text>
+  <polyline points="855,150 855,140 1007,140" fill="none" stroke="#E08E0B" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrAmb)"/>
+  <text x="930" y="134" text-anchor="middle" font-size="13" font-weight="700" fill="#E08E0B">NO</text>
+  <polyline points="1210,149 1310,149 1310,165" fill="none" stroke="#E08E0B" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrAmb)"/>
+
+  <!-- ================= LANE 2 : PREDICT ================= -->
+  <!-- registry -->
+  <g stroke="#6A3FA0" stroke-width="2">
+    <path d="M215,395 L215,475 A90,10 0 0 0 395,475 L395,395" fill="#E9E0F5"/>
+    <ellipse cx="305" cy="395" rx="90" ry="10" fill="#D6C6EE"/>
+  </g>
+  <g text-anchor="middle" fill="#3E2463">
+    <text x="305" y="431" font-size="15" font-weight="700">Model Registry</text>
+    <text x="305" y="450" font-size="12">approved package</text>
+    <text x="305" y="466" font-size="12">(from pre-training P13)</text>
+  </g>
+
+  <!-- O4 -->
+  <rect x="440" y="383" width="220" height="104" rx="12" fill="#6A3FA0"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="550" y="409" font-size="13" font-weight="700" opacity="0.85">O4</text>
+    <text x="550" y="435" font-size="18" font-weight="700">Regime Classifier</text>
+    <text x="550" y="457" font-size="13">regime % per day &amp; box</text>
+    <text x="550" y="474" font-size="13">+ unusual-pattern flag</text>
+  </g>
+
+  <!-- O5 container -->
+  <rect x="700" y="362" width="450" height="140" rx="12" fill="#FFFFFF" stroke="#6A3FA0" stroke-width="2.5"/>
+  <text x="925" y="381" text-anchor="middle" font-size="15" font-weight="700" fill="#6A3FA0">O5 · Correct &amp; Blend</text>
+  <g fill="#E9E0F5" stroke="#6A3FA0" stroke-width="1.5">
+    <rect x="716" y="390" width="95" height="40" rx="6"/>
+    <rect x="823" y="390" width="95" height="40" rx="6"/>
+    <rect x="930" y="390" width="95" height="40" rx="6"/>
+    <rect x="1037" y="390" width="95" height="40" rx="6"/>
+  </g>
+  <g text-anchor="middle" fill="#3E2463">
+    <text x="763" y="407" font-size="13" font-weight="700">E0</text>
+    <text x="763" y="422" font-size="11">quantile map</text>
+    <text x="870" y="407" font-size="13" font-weight="700">E1</text>
+    <text x="870" y="422" font-size="11">regime QM</text>
+    <text x="977" y="407" font-size="13" font-weight="700">E2</text>
+    <text x="977" y="422" font-size="11">ML model</text>
+    <text x="1084" y="407" font-size="13" font-weight="700">E3</text>
+    <text x="1084" y="422" font-size="11">U-Net</text>
+  </g>
+  <g stroke="#6A3FA0" stroke-width="1.8" fill="none" marker-end="url(#arrPur)">
+    <line x1="763" y1="431" x2="763" y2="446"/>
+    <line x1="870" y1="431" x2="870" y2="446"/>
+    <line x1="977" y1="431" x2="977" y2="446"/>
+    <line x1="1084" y1="431" x2="1084" y2="446"/>
+  </g>
+  <rect x="716" y="448" width="416" height="44" rx="8" fill="#6A3FA0"/>
+  <text x="924" y="475" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">Blend by regime %  →  calibrate probabilities</text>
+
+  <!-- O6 products (output) -->
+  <polygon points="1215,390 1445,390 1425,480 1195,480" fill="#FFFFFF" stroke="#6A3FA0" stroke-width="2.5"/>
+  <g text-anchor="middle" fill="#3E2463">
+    <text x="1320" y="419" font-size="15" font-weight="700">O6 · Grid Products</text>
+    <text x="1320" y="441" font-size="12.5">best-estimate rainfall</text>
+    <text x="1320" y="459" font-size="12.5">P(heavy rain) · 10–90% range</text>
+  </g>
+
+  <!-- O7 decision -->
+  <polygon points="1465,435 1575,360 1685,435 1575,510" fill="#6A3FA0"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="1575" y="418" font-size="13" font-weight="700" opacity="0.85">O7</text>
+    <text x="1575" y="438" font-size="14" font-weight="600">Output</text>
+    <text x="1575" y="456" font-size="14" font-weight="600">sensible?</text>
+  </g>
+
+  <!-- output fallback -->
+  <rect x="1720" y="395" width="160" height="80" rx="8" fill="#FFF4E0" stroke="#E08E0B" stroke-width="2"/>
+  <g text-anchor="middle" fill="#8A5300">
+    <text x="1800" y="424" font-size="13" font-weight="700">Fallback output</text>
+    <text x="1800" y="442" font-size="11.5">E0 only → else raw NWP</text>
+    <text x="1800" y="458" font-size="11.5">clearly flagged</text>
+  </g>
+
+  <!-- lane 2 arrows -->
+  <g stroke="#444444" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+    <line x1="662" y1="435" x2="697" y2="435"/>
+    <line x1="1152" y1="435" x2="1202" y2="435"/>
+    <line x1="1437" y1="435" x2="1462" y2="435"/>
+    <!-- lane 2 -> lane 3 -->
+    <polyline points="1575,510 1575,543 335,543 335,595"/>
+  </g>
+  <text x="1562" y="529" text-anchor="end" font-size="13" font-weight="700" fill="#6A3FA0">YES</text>
+  <line x1="1685" y1="435" x2="1717" y2="435" stroke="#E08E0B" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#arrAmb)"/>
+  <text x="1701" y="426" text-anchor="middle" font-size="12" font-weight="700" fill="#E08E0B">NO</text>
+  <polyline points="1800,475 1800,543 1577,543" fill="none" stroke="#E08E0B" stroke-width="2.5" stroke-dasharray="7 5"/>
+
+  <!-- model supply -->
+  <g stroke="#6A3FA0" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#arrPur)">
+    <polyline points="305,486 305,522 925,522 925,505"/>
+    <line x1="550" y1="522" x2="550" y2="490"/>
+  </g>
+  <text x="316" y="516" font-size="12" font-style="italic" font-weight="600" fill="#6A3FA0">approved models used</text>
+
+  <!-- ================= LANE 3 : DELIVER ================= -->
+  <!-- O8 -->
+  <rect x="215" y="598" width="240" height="104" rx="12" fill="#0F7C7C"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="335" y="624" font-size="13" font-weight="700" opacity="0.85">O8</text>
+    <text x="335" y="650" font-size="18" font-weight="700">District Products</text>
+    <text x="335" y="672" font-size="13">mean · max · % area</text>
+  </g>
+  <rect x="262" y="682" width="14" height="12" rx="2" fill="#43A047"/>
+  <rect x="280" y="682" width="14" height="12" rx="2" fill="#F2C200"/>
+  <rect x="298" y="682" width="14" height="12" rx="2" fill="#EF7D00"/>
+  <rect x="316" y="682" width="14" height="12" rx="2" fill="#D32F2F"/>
+  <text x="338" y="693" font-size="12.5" fill="#FFFFFF">warning colour</text>
+
+  <!-- O9 -->
+  <rect x="500" y="598" width="240" height="104" rx="12" fill="#0F7C7C"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="620" y="624" font-size="13" font-weight="700" opacity="0.85">O9</text>
+    <text x="620" y="650" font-size="18" font-weight="700">Forecaster Review</text>
+    <text x="620" y="672" font-size="13">human in the loop:</text>
+    <text x="620" y="689" font-size="13">accept / edit → issue</text>
+  </g>
+
+  <!-- O10 dissemination (output) -->
+  <polygon points="805,605 1075,605 1055,695 785,695" fill="#FFFFFF" stroke="#0F7C7C" stroke-width="2.5"/>
+  <g text-anchor="middle" fill="#0B3F3F">
+    <text x="930" y="635" font-size="15" font-weight="700">O10 · Dissemination</text>
+    <text x="930" y="656" font-size="12.5">maps · district table</text>
+    <text x="930" y="674" font-size="12.5">NetCDF / GeoTIFF · API</text>
+  </g>
+
+  <!-- users -->
+  <rect x="1150" y="577" width="270" height="56" rx="28" fill="#1B3A57"/>
+  <text x="1285" y="601" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">Users</text>
+  <text x="1285" y="620" text-anchor="middle" font-size="11" fill="#DCE6F0">IMD bulletins · SDMAs · agromet · public</text>
+
+  <!-- archive -->
+  <g stroke="#0F7C7C" stroke-width="2">
+    <path d="M1150,672 L1150,730 A135,10 0 0 0 1420,730 L1420,672" fill="#D5EFEC"/>
+    <ellipse cx="1285" cy="672" rx="135" ry="10" fill="#B5E1DC"/>
+  </g>
+  <text x="1285" y="703" text-anchor="middle" font-size="14" font-weight="700" fill="#0B3F3F">Archive</text>
+  <text x="1285" y="721" text-anchor="middle" font-size="11.5" fill="#0B3F3F">every input, output &amp; model version</text>
+
+  <!-- lane 3 arrows -->
+  <g stroke="#444444" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+    <line x1="457" y1="650" x2="497" y2="650"/>
+    <line x1="742" y1="650" x2="793" y2="650"/>
+    <polyline points="1067,650 1110,650 1110,605 1147,605"/>
+    <polyline points="1110,650 1110,700 1147,700"/>
+    <!-- lane 3 -> lane 4 -->
+    <polyline points="1422,700 1550,700 1550,810"/>
+  </g>
+  <circle cx="1110" cy="650" r="5" fill="#444444"/>
+
+  <!-- legend -->
+  <rect x="1600" y="562" width="285" height="150" rx="10" fill="#FFFFFF" stroke="#B8C4C2" stroke-width="1.5"/>
+  <text x="1614" y="582" font-size="13" font-weight="700" fill="#333333">Legend</text>
+  <g stroke="#555555" stroke-width="1.5" fill="#E4E4E4">
+    <path d="M1612,595 L1612,605 A13,4 0 0 0 1638,605 L1638,595"/>
+    <ellipse cx="1625" cy="595" rx="13" ry="4" fill="#CFCFCF"/>
+    <rect x="1612" y="614" width="26" height="15" rx="4"/>
+    <polygon points="1612,644 1625,636 1638,644 1625,652"/>
+    <polygon points="1616,659 1640,659 1636,673 1612,673" fill="#FFFFFF"/>
+    <rect x="1612" y="681" width="26" height="14" rx="7" fill="#1B3A57" stroke="none"/>
+  </g>
+  <g font-size="12.5" fill="#333333">
+    <text x="1646" y="605">Data store</text>
+    <text x="1646" y="626">Processing step</text>
+    <text x="1646" y="648">Decision</text>
+    <text x="1646" y="670">Output</text>
+    <text x="1646" y="692">Start / end</text>
+  </g>
+  <line x1="1752" y1="601" x2="1778" y2="601" stroke="#444444" stroke-width="2.5" marker-end="url(#arr)"/>
+  <line x1="1752" y1="623" x2="1778" y2="623" stroke="#E08E0B" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#arrAmb)"/>
+  <line x1="1752" y1="645" x2="1778" y2="645" stroke="#6A3FA0" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrPur)"/>
+  <line x1="1752" y1="667" x2="1778" y2="667" stroke="#1E6B23" stroke-width="2.5" marker-end="url(#arrGrn)"/>
+  <g font-size="12.5" fill="#333333">
+    <text x="1786" y="605">Main flow</text>
+    <text x="1786" y="627">Fallback</text>
+    <text x="1786" y="649">Model supply</text>
+    <text x="1786" y="671">Improve loop</text>
+  </g>
+
+  <!-- ================= LANE 4 : LEARN & IMPROVE (right → left) ================= -->
+  <!-- observations -->
+  <g stroke="#2E7D32" stroke-width="2">
+    <path d="M1700,827 L1700,903 A90,10 0 0 0 1880,903 L1880,827" fill="#DCEFDD"/>
+    <ellipse cx="1790" cy="827" rx="90" ry="10" fill="#C2E3C4"/>
+  </g>
+  <g text-anchor="middle" fill="#1B4D1E">
+    <text x="1790" y="861" font-size="14" font-weight="700">Observations</text>
+    <text x="1790" y="879" font-size="12">arrive next day</text>
+    <text x="1790" y="896" font-size="11.5">gauges · AWS · IMD grid</text>
+  </g>
+
+  <!-- O11 -->
+  <rect x="1440" y="813" width="220" height="104" rx="12" fill="#2E7D32"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="1550" y="839" font-size="13" font-weight="700" opacity="0.85">O11</text>
+    <text x="1550" y="865" font-size="18" font-weight="700">Daily Verification</text>
+    <text x="1550" y="887" font-size="13">forecast vs observed</text>
+    <text x="1550" y="904" font-size="13">live skill dashboard</text>
+  </g>
+
+  <!-- O12 decision -->
+  <polygon points="1090,865 1215,783 1340,865 1215,947" fill="#2E7D32"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="1215" y="838" font-size="13" font-weight="700" opacity="0.85">O12</text>
+    <text x="1215" y="858" font-size="13.5" font-weight="600">Skill drop, data</text>
+    <text x="1215" y="875" font-size="13.5" font-weight="600">drift or NWP</text>
+    <text x="1215" y="892" font-size="13.5" font-weight="600">upgrade?</text>
+  </g>
+  <text x="1352" y="940" font-size="12.5" font-style="italic" fill="#1B4D1E">NO → keep monitoring daily</text>
+
+  <!-- retrain -->
+  <rect x="800" y="813" width="240" height="104" rx="12" fill="#2E7D32"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="920" y="839" font-size="13" font-weight="700" opacity="0.85">RE-RUN P1 → P13</text>
+    <text x="920" y="865" font-size="18" font-weight="700">Retrain</text>
+    <text x="920" y="887" font-size="13">latest data, new NWP</text>
+    <text x="920" y="904" font-size="13">version if needed</text>
+  </g>
+
+  <!-- shadow + gate -->
+  <rect x="520" y="813" width="240" height="104" rx="12" fill="#2E7D32"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="640" y="839" font-size="13" font-weight="700" opacity="0.85">SHADOW + GATE</text>
+    <text x="640" y="865" font-size="18" font-weight="700">Test New Version</text>
+    <text x="640" y="887" font-size="13">runs beside current one,</text>
+    <text x="640" y="904" font-size="13">must beat it to replace it</text>
+  </g>
+
+  <!-- lane 4 arrows -->
+  <g stroke="#444444" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+    <line x1="1698" y1="865" x2="1663" y2="865"/>
+    <line x1="1438" y1="865" x2="1343" y2="865"/>
+    <line x1="1088" y1="865" x2="1043" y2="865"/>
+    <line x1="798" y1="865" x2="763" y2="865"/>
+  </g>
+  <text x="1066" y="856" text-anchor="middle" font-size="13" font-weight="700" fill="#2E7D32">YES</text>
+
+  <!-- improvement loop back to registry -->
+  <polyline points="518,865 203,865 203,435 212,435" fill="none" stroke="#1E6B23" stroke-width="2.5" marker-end="url(#arrGrn)"/>
+  <text x="228" y="855" font-size="12.5" font-weight="700" fill="#1E6B23">new approved version → Model Registry</text>
+
+  <!-- ================= FOOTER ================= -->
+  <rect x="30" y="982" width="1860" height="72" rx="10" fill="#F3F5F7"/>
+  <text x="960" y="1012" text-anchor="middle" font-size="17" fill="#1A1A1A"><tspan font-weight="700">Every day: </tspan>check inputs → identify regime → correct &amp; blend → sanity-check → district products → forecaster issues → verify next day → retrain when skill drifts</text>
+  <text x="960" y="1038" text-anchor="middle" font-size="13" fill="#555555">A fallback at every stage means a forecast is never missing (worst case: raw NWP, clearly flagged)   |   Every output is stamped with its model version   |   Runs on-premise at IMD / NCMRWF</text>
+</svg>

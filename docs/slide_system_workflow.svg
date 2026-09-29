@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1010" viewBox="0 0 900 1010" font-family="Arial, Segoe UI, sans-serif">
+<rect width="900" height="1010" fill="white"/>
+<text x="450.0" y="34" text-anchor="middle" font-size="26" font-weight="700" fill="#111">System Workflow  (operational, every day ≈ 06:30 IST)</text>
+<rect x="20" y="55" width="860" height="190" rx="14" fill="#EAF4FB"/>
+<text x="34" y="79" font-size="17" font-weight="700" fill="#1B4F72">Step 1 · Ingestion &amp; Pre-processing</text>
+<rect x="20" y="260" width="860" height="270" rx="14" fill="#F4ECF7"/>
+<text x="34" y="284" font-size="17" font-weight="700" fill="#4A235A">Step 2 · Regime Diagnosis &amp; Routing</text>
+<rect x="20" y="545" width="860" height="120" rx="14" fill="#FDEEF3"/>
+<text x="34" y="569" font-size="17" font-weight="700" fill="#78281F">Step 3 · Grid → District products</text>
+<rect x="20" y="680" width="860" height="315" rx="14" fill="#EEF9EC"/>
+<text x="34" y="704" font-size="17" font-weight="700" fill="#145A32">Step 4 · Delivery &amp; Verification</text>
+<rect x="40" y="95" width="240" height="62" rx="10" fill="#D6EAF8" stroke="#2E86C1" stroke-width="2"/>
+<text x="160.0" y="123.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Today's 00Z GFS forecast</text>
+<text x="160.0" y="143.0" text-anchor="middle" font-size="14" fill="#333">rain · u850 · v850 · MSLP</text>
+<rect x="330" y="95" width="250" height="62" rx="10" fill="#ECECEC" stroke="#707070" stroke-width="2"/>
+<text x="455.0" y="123.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Pre-processing</text>
+<text x="455.0" y="143.0" text-anchor="middle" font-size="14" fill="#333">24-h totals · regrid to IMD 0.25°</text>
+<rect x="630" y="95" width="230" height="62" rx="10" fill="#ECECEC" stroke="#707070" stroke-width="2"/>
+<text x="745.0" y="123.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Unified tensor</text>
+<text x="745.0" y="143.0" text-anchor="middle" font-size="14" fill="#333">6 × 129 × 135 · z-scored</text>
+<rect x="330" y="175" width="250" height="52" rx="10" fill="#D6EAF8" stroke="#2E86C1" stroke-width="2"/>
+<text x="455.0" y="198.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Cached terrain</text>
+<text x="455.0" y="218.0" text-anchor="middle" font-size="14" fill="#333">SRTM elevation · land-sea mask</text>
+<path d="M280.0,126.0 L319.0,126.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="330.0,126.0 319.0,132.0 319.0,120.0" fill="#222"/>
+<path d="M580.0,126.0 L619.0,126.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="630.0,126.0 619.0,132.0 619.0,120.0" fill="#222"/>
+<path d="M580.0,201.0 L605.0,201.0 L605.0,140.0 L619.0,140.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="630.0,140.0 619.0,146.0 619.0,134.0" fill="#222"/>
+<rect x="40" y="305" width="240" height="70" rx="10" fill="#E8DAEF" stroke="#7D3C98" stroke-width="2"/>
+<text x="160.0" y="337.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Regime Classifier  (frozen)</text>
+<text x="160.0" y="357.0" text-anchor="middle" font-size="14" fill="#333">wind &amp; pressure → regime + confidence</text>
+<rect x="325" y="298" width="270" height="118" rx="12" fill="none" stroke="#7D3C98" stroke-width="1.5" stroke-dasharray="6,4"/>
+<text x="460" y="316" text-anchor="middle" font-size="13" font-weight="700" fill="#4A235A">Expert bank · one U-Net per regime</text>
+<rect x="340" y="328" width="120" height="32" rx="16.0" fill="#F5EEF8" stroke="#A569BD" stroke-width="1.5"/>
+<text x="400.0" y="349.0" text-anchor="middle" font-size="13" font-weight="500" fill="#111">Active</text>
+<rect x="470" y="328" width="120" height="32" rx="16.0" fill="#F5EEF8" stroke="#A569BD" stroke-width="1.5"/>
+<text x="530.0" y="349.0" text-anchor="middle" font-size="13" font-weight="500" fill="#111">Break</text>
+<rect x="340" y="370" width="120" height="32" rx="16.0" fill="#BB8FCE" stroke="#4A235A" stroke-width="1.5"/>
+<text x="400.0" y="391.0" text-anchor="middle" font-size="13" font-weight="700" fill="#111">Depression</text>
+<rect x="470" y="370" width="120" height="32" rx="16.0" fill="#F5EEF8" stroke="#A569BD" stroke-width="1.5"/>
+<text x="530.0" y="391.0" text-anchor="middle" font-size="13" font-weight="500" fill="#111">Coastal / Oro</text>
+<rect x="640" y="305" width="220" height="70" rx="10" fill="#E8DAEF" stroke="#7D3C98" stroke-width="2"/>
+<text x="750.0" y="337.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Selected U-Net  (frozen)</text>
+<text x="750.0" y="357.0" text-anchor="middle" font-size="14" fill="#333">e.g. Depression expert</text>
+<rect x="40" y="440" width="240" height="62" rx="10" fill="#E8DAEF" stroke="#7D3C98" stroke-width="2"/>
+<text x="160.0" y="468.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Shared U-Net  (fallback)</text>
+<text x="160.0" y="488.0" text-anchor="middle" font-size="14" fill="#333">used when confidence is low</text>
+<path d="M690.0,157.0 L690.0,294.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="690.0,305.0 684.0,294.0 696.0,294.0" fill="#222"/>
+<rect x="693.68" y="259" width="102.64" height="18" rx="4" fill="white" fill-opacity="0.92"/>
+<text x="745" y="272" text-anchor="middle" font-size="13" font-style="italic" fill="#333">all 6 channels</text>
+<path d="M700.0,157.0 L700.0,170.0 L160.0,170.0 L160.0,294.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="160.0,305.0 154.0,294.0 166.0,294.0" fill="#222"/>
+<rect x="183.39999999999998" y="242" width="143.20000000000002" height="18" rx="4" fill="white" fill-opacity="0.92"/>
+<text x="255" y="255" text-anchor="middle" font-size="13" font-style="italic" fill="#333">wind &amp; pressure only</text>
+<path d="M280.0,340.0 L314.0,340.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="325.0,340.0 314.0,346.0 314.0,334.0" fill="#222"/>
+<rect x="280.24" y="432" width="359.52000000000004" height="18" rx="4" fill="white" fill-opacity="0.92"/>
+<text x="460" y="445" text-anchor="middle" font-size="13" font-style="italic" fill="#333">picks the expert trained for today's weather pattern</text>
+<path d="M595.0,340.0 L629.0,340.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="640.0,340.0 629.0,346.0 629.0,334.0" fill="#222"/>
+<path d="M160.0,375.0 L160.0,429.0" fill="none" stroke="#222" stroke-width="2.2" stroke-dasharray="7,5"/>
+<polygon points="160.0,440.0 154.0,429.0 166.0,429.0" fill="#222"/>
+<path d="M280.0,471.0 L620.0,471.0 L620.0,386.0" fill="none" stroke="#222" stroke-width="2.2" stroke-dasharray="7,5"/>
+<polygon points="620.0,375.0 626.0,386.0 614.0,386.0" fill="#222"/>
+<rect x="341.5" y="477" width="177.0" height="18" rx="4" fill="white" fill-opacity="0.92"/>
+<text x="430" y="490" text-anchor="middle" font-size="13" font-style="italic" fill="#333">low confidence → fallback</text>
+<path d="M750.0,375.0 L750.0,574.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="750.0,585.0 744.0,574.0 756.0,574.0" fill="#222"/>
+<rect x="691.92" y="547" width="116.16" height="18" rx="4" fill="white" fill-opacity="0.92"/>
+<text x="750" y="560" text-anchor="middle" font-size="13" font-style="italic" fill="#333">corrected output</text>
+<rect x="480" y="585" width="380" height="62" rx="10" fill="#FCE4EC" stroke="#C2185B" stroke-width="2"/>
+<text x="670.0" y="613.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Corrected grid</text>
+<text x="670.0" y="633.0" text-anchor="middle" font-size="14" fill="#333">rain (mm) · P(&gt; 64.5 / 115.5 / 204.4 mm)</text>
+<rect x="40" y="585" width="380" height="62" rx="10" fill="#FCE4EC" stroke="#C2185B" stroke-width="2"/>
+<text x="230.0" y="613.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">District aggregation</text>
+<text x="230.0" y="633.0" text-anchor="middle" font-size="14" fill="#333">area-weighted mean &amp; max · alert colour from P</text>
+<path d="M480.0,616.0 L431.0,616.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="420.0,616.0 431.0,610.0 431.0,622.0" fill="#222"/>
+<rect x="40" y="725" width="380" height="70" rx="10" fill="#C8F7C5" stroke="#1E8449" stroke-width="2"/>
+<text x="230.0" y="757.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Dashboard  (Streamlit + Folium)</text>
+<text x="230.0" y="777.0" text-anchor="middle" font-size="14" fill="#333">Raw / Corrected / Observed · regime badge</text>
+<rect x="40" y="905" width="380" height="62" rx="10" fill="#C8F7C5" stroke="#1E8449" stroke-width="2"/>
+<text x="230.0" y="933.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Display: District Alert Map</text>
+<text x="230.0" y="953.0" text-anchor="middle" font-size="14" fill="#333">+ probability table per district</text>
+<rect x="480" y="725" width="175" height="52" rx="10" fill="#D6EAF8" stroke="#2E86C1" stroke-width="2"/>
+<text x="567.5" y="748.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">IMD observations</text>
+<text x="567.5" y="768.0" text-anchor="middle" font-size="14" fill="#333">0.25° · next day</text>
+<rect x="685" y="725" width="175" height="52" rx="10" fill="#D6EAF8" stroke="#2E86C1" stroke-width="2"/>
+<text x="772.5" y="748.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Raw GFS  (baseline)</text>
+<text x="772.5" y="768.0" text-anchor="middle" font-size="14" fill="#333">for comparison</text>
+<rect x="480" y="810" width="380" height="62" rx="10" fill="#FDEBD0" stroke="#CA6F1E" stroke-width="2"/>
+<text x="670.0" y="838.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Verification engine  (next day)</text>
+<text x="670.0" y="858.0" text-anchor="middle" font-size="14" fill="#333">RMSE · ETS · CSI · POD · FAR · FSS</text>
+<rect x="480" y="905" width="380" height="62" rx="10" fill="#C8F7C5" stroke="#1E8449" stroke-width="2"/>
+<text x="670.0" y="933.0" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Display: Skill Scoreboard</text>
+<text x="670.0" y="953.0" text-anchor="middle" font-size="14" fill="#333">by regime · by lead day</text>
+<path d="M230.0,647.0 L230.0,714.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="230.0,725.0 224.0,714.0 236.0,714.0" fill="#222"/>
+<path d="M230.0,795.0 L230.0,894.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="230.0,905.0 224.0,894.0 236.0,894.0" fill="#222"/>
+<path d="M670.0,647.0 L670.0,799.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="670.0,810.0 664.0,799.0 676.0,799.0" fill="#222"/>
+<path d="M567.0,777.0 L567.0,799.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="567.0,810.0 561.0,799.0 573.0,799.0" fill="#222"/>
+<path d="M772.0,777.0 L772.0,799.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="772.0,810.0 766.0,799.0 778.0,799.0" fill="#222"/>
+<path d="M670.0,872.0 L670.0,894.0" fill="none" stroke="#222" stroke-width="2.2"/>
+<polygon points="670.0,905.0 664.0,894.0 676.0,894.0" fill="#222"/>
+<path d="M480.0,936.0 L431.0,936.0" fill="none" stroke="#222" stroke-width="2.2" stroke-dasharray="7,5"/>
+<polygon points="420.0,936.0 431.0,930.0 431.0,942.0" fill="#222"/>
+<rect x="361.5" y="972" width="177.0" height="18" rx="4" fill="white" fill-opacity="0.92"/>
+<text x="450" y="985" text-anchor="middle" font-size="13" font-style="italic" fill="#333">scores shown on dashboard</text>
+</svg>

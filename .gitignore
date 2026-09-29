@@ -1,0 +1,15 @@
+data/
+*.grib2
+*.idx
+*.nc
+*.zarr
+*.pt
+*.pth
+__pycache__/
+.pytest_cache/
+*.egg-info/
+.venv/
+
+# prototype v2: generated results (regenerate with proto/run_pipeline.py)
+proto/output/
+proto/output_run.log

@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1420" viewBox="0 0 1700 1420" font-family="Segoe UI, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+<rect width="1700" height="1420" fill="white"/>
+<text x="30" y="42" font-size="28" font-weight="700" fill="#222">Proposed system — pre-training workflow (operational target design)</text>
+<text x="30" y="66" font-size="15" fill="#555">Covers all six PS regimes across two seasons. Runs on NCMRWF's own operational data, not public proxies.</text>
+<rect x="30" y="90" width="400" height="105" rx="9" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2.2"/>
+<text x="230.0" y="113" text-anchor="middle" font-size="15" font-weight="700" fill="#222">NCMRWF operational NWP</text>
+<text x="230.0" y="130.5" text-anchor="middle" font-size="11.5" fill="#333">NCUM-G / NCUM-R live feed</text>
+<text x="230.0" y="148.0" text-anchor="middle" font-size="11.5" fill="#333">rain, wind, MSLP, 500 hPa height</text>
+<rect x="450" y="90" width="400" height="105" rx="9" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2.2"/>
+<text x="650.0" y="113" text-anchor="middle" font-size="15" font-weight="700" fill="#222">IMD ground truth</text>
+<text x="650.0" y="130.5" text-anchor="middle" font-size="11.5" fill="#333">AWS network + gridded rainfall</text>
+<text x="650.0" y="148.0" text-anchor="middle" font-size="11.5" fill="#333">near-real-time + daily QC'd product</text>
+<rect x="870" y="90" width="390" height="105" rx="9" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2.2"/>
+<text x="1065.0" y="113" text-anchor="middle" font-size="15" font-weight="700" fill="#222">ISRO Cartosat DEM</text>
+<text x="1065.0" y="130.5" text-anchor="middle" font-size="11.5" fill="#333">official elevation + coastline</text>
+<rect x="1280" y="90" width="390" height="105" rx="9" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2.2"/>
+<text x="1475.0" y="113" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Survey of India boundaries</text>
+<text x="1475.0" y="130.5" text-anchor="middle" font-size="11.5" fill="#333">official district polygons</text>
+<rect x="30" y="225" width="800" height="100" rx="9" fill="#EFEFEF" stroke="#666666" stroke-width="2.2"/>
+<text x="430.0" y="248" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Monsoon ingestion (JJAS)</text>
+<text x="430.0" y="265.5" text-anchor="middle" font-size="11.5" fill="#333">align to operational grid (12/4 km)</text>
+<text x="430.0" y="283.0" text-anchor="middle" font-size="11.5" fill="#333">channels: rain, u/v wind, MSLP, elevation, land-coast mask</text>
+<rect x="860" y="225" width="810" height="100" rx="9" fill="#EFEFEF" stroke="#666666" stroke-width="2.2"/>
+<text x="1265.0" y="248" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Winter ingestion (Oct–May)</text>
+<text x="1265.0" y="265.5" text-anchor="middle" font-size="11.5" fill="#333">same alignment, extra channel: 500 hPa geopotential height</text>
+<text x="1265.0" y="283.0" text-anchor="middle" font-size="11.5" fill="#333">+ jet-stream latitude (Western Disturbance signal)</text>
+<rect x="30" y="355" width="800" height="220" rx="10" fill="#FAFAFA" stroke="#999999" stroke-width="1.5" stroke-dasharray="7,5"/>
+<text x="42" y="375" font-size="14.5" font-weight="700" fill="#555">Monsoon regime labels</text>
+<text x="42" y="392" font-size="12" fill="#777">from OBSERVED rainfall + pressure, met.-validated thresholds</text>
+<rect x="50" y="400" width="370" height="80" rx="9" fill="#FFF6CC" stroke="#B8960C" stroke-width="2.2"/>
+<text x="235.0" y="423" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Active / Break</text>
+<text x="235.0" y="439.5" text-anchor="middle" font-size="10.5" fill="#333">core-zone rainfall anomaly</text>
+<text x="235.0" y="456.0" text-anchor="middle" font-size="10.5" fill="#333">vs 30yr+ climatology</text>
+<rect x="440" y="400" width="370" height="80" rx="9" fill="#FFF6CC" stroke="#B8960C" stroke-width="2.2"/>
+<text x="625.0" y="423" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Depression</text>
+<text x="625.0" y="439.5" text-anchor="middle" font-size="10.5" fill="#333">closed low in MSLP field</text>
+<rect x="50" y="490" width="370" height="75" rx="9" fill="#FFF6CC" stroke="#B8960C" stroke-width="2.2"/>
+<text x="235.0" y="513" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Orographic</text>
+<text x="235.0" y="529.5" text-anchor="middle" font-size="10.5" fill="#333">rain locked to terrain lift</text>
+<text x="235.0" y="546.0" text-anchor="middle" font-size="10.5" fill="#333">(Ghats, NE hills) regardless of regime</text>
+<rect x="440" y="490" width="370" height="75" rx="9" fill="#FFF6CC" stroke="#B8960C" stroke-width="2.2"/>
+<text x="625.0" y="513" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Coastal</text>
+<text x="625.0" y="529.5" text-anchor="middle" font-size="10.5" fill="#333">rain driven by onshore flow</text>
+<text x="625.0" y="546.0" text-anchor="middle" font-size="10.5" fill="#333">at the coastline</text>
+<rect x="860" y="355" width="810" height="220" rx="10" fill="#FAFAFA" stroke="#999999" stroke-width="1.5" stroke-dasharray="7,5"/>
+<text x="872" y="375" font-size="14.5" font-weight="700" fill="#555">Winter regime label</text>
+<text x="872" y="392" font-size="12" fill="#777">different physics — needs its own definition</text>
+<rect x="880" y="410" width="770" height="130" rx="9" fill="#FFF6CC" stroke="#B8960C" stroke-width="2.2"/>
+<text x="1265.0" y="433" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Western Disturbance</text>
+<text x="1265.0" y="450.5" text-anchor="middle" font-size="11.5" fill="#333">extratropical trough at 500 hPa +</text>
+<text x="1265.0" y="468.0" text-anchor="middle" font-size="11.5" fill="#333">jet-stream position over north India</text>
+<text x="1265.0" y="485.5" text-anchor="middle" font-size="11.5" fill="#333">distinct from all five monsoon regimes</text>
+<rect x="30" y="600" width="1640" height="55" rx="9" fill="#E0F7F5" stroke="#16A085" stroke-width="2.2"/>
+<text x="850.0" y="621" text-anchor="middle" font-size="13" font-weight="700" fill="#222">All regime definitions and thresholds require sign-off from IMD / NCMRWF meteorologists before use</text>
+<rect x="30" y="685" width="300" height="90" rx="9" fill="#EFEFEF" stroke="#666666" stroke-width="2.2"/>
+<text x="180.0" y="708" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Season gate</text>
+<text x="180.0" y="725" text-anchor="middle" font-size="11" fill="#333">calendar month decides</text>
+<text x="180.0" y="742" text-anchor="middle" font-size="11" fill="#333">monsoon mode vs winter mode</text>
+<rect x="360" y="685" width="620" height="90" rx="9" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2.2"/>
+<text x="670.0" y="708" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Monsoon classifier (5-way CNN)</text>
+<text x="670.0" y="725.5" text-anchor="middle" font-size="11.5" fill="#333">input: wind + MSLP only (never rainfall)</text>
+<text x="670.0" y="743.0" text-anchor="middle" font-size="11.5" fill="#333">-&gt; Active / Break / Depression / Orographic / Coastal</text>
+<rect x="1010" y="685" width="660" height="90" rx="9" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2.2"/>
+<text x="1340.0" y="708" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Western Disturbance detector</text>
+<text x="1340.0" y="725.5" text-anchor="middle" font-size="11.5" fill="#333">input: wind + MSLP + 500 hPa height</text>
+<text x="1340.0" y="743.0" text-anchor="middle" font-size="11.5" fill="#333">-&gt; WD present / not present, with confidence</text>
+<rect x="30" y="810" width="1640" height="260" rx="10" fill="#FAFAFA" stroke="#999999" stroke-width="1.5" stroke-dasharray="7,5"/>
+<text x="42" y="830" font-size="14.5" font-weight="700" fill="#555">Stage B · Six regime-specific correction U-Nets</text>
+<text x="42" y="847" font-size="12" fill="#777">each warm-started from one shared base model, fine-tuned on only its own regime's days</text>
+<rect x="50.0" y="855" width="250.0" height="190" rx="9" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2.2"/>
+<text x="175.0" y="876" text-anchor="middle" font-size="13" font-weight="700" fill="#222">Active</text>
+<text x="175.0" y="892.5" text-anchor="middle" font-size="10.5" fill="#333">operational-resolution</text>
+<text x="175.0" y="909.0" text-anchor="middle" font-size="10.5" fill="#333">U-Net expert</text>
+<rect x="320.0" y="855" width="250.0" height="190" rx="9" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2.2"/>
+<text x="445.0" y="876" text-anchor="middle" font-size="13" font-weight="700" fill="#222">Break</text>
+<text x="445.0" y="892.5" text-anchor="middle" font-size="10.5" fill="#333">operational-resolution</text>
+<text x="445.0" y="909.0" text-anchor="middle" font-size="10.5" fill="#333">U-Net expert</text>
+<rect x="590.0" y="855" width="250.0" height="190" rx="9" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2.2"/>
+<text x="715.0" y="876" text-anchor="middle" font-size="13" font-weight="700" fill="#222">Depression</text>
+<text x="715.0" y="892.5" text-anchor="middle" font-size="10.5" fill="#333">operational-resolution</text>
+<text x="715.0" y="909.0" text-anchor="middle" font-size="10.5" fill="#333">U-Net expert</text>
+<rect x="860.0" y="855" width="250.0" height="190" rx="9" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2.2"/>
+<text x="985.0" y="876" text-anchor="middle" font-size="13" font-weight="700" fill="#222">Orographic</text>
+<text x="985.0" y="892.5" text-anchor="middle" font-size="10.5" fill="#333">operational-resolution</text>
+<text x="985.0" y="909.0" text-anchor="middle" font-size="10.5" fill="#333">U-Net expert</text>
+<rect x="1130.0" y="855" width="250.0" height="190" rx="9" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2.2"/>
+<text x="1255.0" y="876" text-anchor="middle" font-size="13" font-weight="700" fill="#222">Coastal</text>
+<text x="1255.0" y="892.5" text-anchor="middle" font-size="10.5" fill="#333">operational-resolution</text>
+<text x="1255.0" y="909.0" text-anchor="middle" font-size="10.5" fill="#333">U-Net expert</text>
+<rect x="1400.0" y="855" width="250.0" height="190" rx="9" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2.2"/>
+<text x="1525.0" y="876" text-anchor="middle" font-size="13" font-weight="700" fill="#222">Western Disturbance</text>
+<text x="1525.0" y="892.5" text-anchor="middle" font-size="10.5" fill="#333">operational-resolution</text>
+<text x="1525.0" y="909.0" text-anchor="middle" font-size="10.5" fill="#333">U-Net expert</text>
+<rect x="30" y="1105" width="800" height="110" rx="9" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2.2"/>
+<text x="430.0" y="1128" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Output head (identical on all 6 experts)</text>
+<text x="430.0" y="1145.5" text-anchor="middle" font-size="11.5" fill="#333">ch0: corrected rainfall (mm) — softplus</text>
+<text x="430.0" y="1163.0" text-anchor="middle" font-size="11.5" fill="#333">ch1-3: P(&gt; heavy / very heavy / extremely heavy) — sigmoid, monotone</text>
+<rect x="860" y="1105" width="810" height="110" rx="9" fill="#FDE3CC" stroke="#D2691E" stroke-width="2.2"/>
+<text x="1265.0" y="1128" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Asymmetric, threshold-weighted loss</text>
+<text x="1265.0" y="1145.5" text-anchor="middle" font-size="11.5" fill="#333">extra penalty ONLY for under-predicting extreme rain</text>
+<text x="1265.0" y="1163.0" text-anchor="middle" font-size="11.5" fill="#333">same design across monsoon and winter experts</text>
+<rect x="30" y="1245" width="540" height="100" rx="9" fill="#DDF3E0" stroke="#2E8B57" stroke-width="2.2"/>
+<text x="300.0" y="1268" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Versioned model bundle</text>
+<text x="300.0" y="1285" text-anchor="middle" font-size="11" fill="#333">classifier + 6 U-Nets + norm stats</text>
+<text x="300.0" y="1302" text-anchor="middle" font-size="11" fill="#333">tagged with NWP model version + training window</text>
+<rect x="590" y="1245" width="540" height="100" rx="9" fill="#E0F7F5" stroke="#16A085" stroke-width="2.2"/>
+<text x="860.0" y="1268" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Meteorologist sign-off gate</text>
+<text x="860.0" y="1285" text-anchor="middle" font-size="11" fill="#333">regime definitions, thresholds and alert</text>
+<text x="860.0" y="1302" text-anchor="middle" font-size="11" fill="#333">cutoffs reviewed before the bundle ships</text>
+<rect x="1150" y="1245" width="520" height="100" rx="9" fill="#EFEFEF" stroke="#666666" stroke-width="2.2"/>
+<text x="1410.0" y="1268" text-anchor="middle" font-size="15" font-weight="700" fill="#222">Retraining trigger</text>
+<text x="1410.0" y="1285" text-anchor="middle" font-size="11" fill="#333">scheduled annually before each monsoon,</text>
+<text x="1410.0" y="1302" text-anchor="middle" font-size="11" fill="#333">or whenever NCMRWF upgrades its NWP model</text>
+<rect x="30" y="1375" width="20" height="14" rx="3" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2"/>
+<text x="57" y="1387" font-size="14" fill="#444">data</text>
+<rect x="235" y="1375" width="20" height="14" rx="3" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="262" y="1387" font-size="14" fill="#444">processing</text>
+<rect x="440" y="1375" width="20" height="14" rx="3" fill="#FFF6CC" stroke="#B8960C" stroke-width="2"/>
+<text x="467" y="1387" font-size="14" fill="#444">labels</text>
+<rect x="645" y="1375" width="20" height="14" rx="3" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="672" y="1387" font-size="14" fill="#444">neural network</text>
+<rect x="850" y="1375" width="20" height="14" rx="3" fill="#FDE3CC" stroke="#D2691E" stroke-width="2"/>
+<text x="877" y="1387" font-size="14" fill="#444">loss</text>
+<rect x="1055" y="1375" width="20" height="14" rx="3" fill="#E0F7F5" stroke="#16A085" stroke-width="2"/>
+<text x="1082" y="1387" font-size="14" fill="#444">governance / sign-off</text>
+<path d="M430,195 L430,225" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M1065,195 L1065,225" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M430,325 L430,355" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M1265,325 L1265,355" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M430,575 L430,600" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M1265,575 L1265,600" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M430,655 L430,685 L330,685" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="380.0" y="678.0" text-anchor="middle" font-size="12.5" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">monsoon days</text>
+<path d="M1265,655 L1265,685 L1320,685" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="1292.5" y="678.0" text-anchor="middle" font-size="12.5" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">winter days</text>
+<path d="M330,730 L360,730" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M330,775 L330,800 L1010,800 L1010,775" fill="none" stroke="#333" stroke-width="2.2" stroke-dasharray="7,5" marker-end="url(#arr)"/>
+<path d="M680,775 L680,855" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="680.0" y="808.0" text-anchor="middle" font-size="12.5" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">regime label -&gt; target</text>
+<path d="M1340,775 L1340,855" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="1340.0" y="808.0" text-anchor="middle" font-size="12.5" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">WD label -&gt; target</text>
+<path d="M430,1070 L430,1105" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="430.0" y="1080.5" text-anchor="middle" font-size="12.5" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">y-hat</text>
+<path d="M830,1200 L860,1200" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M300,1215 L300,1245" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M860,1180 L860,1215 L860,1245" fill="none" stroke="#333" stroke-width="2.2" stroke-dasharray="7,5" marker-end="url(#arr)"/>
+<path d="M300,1345 L860,1345 L860,1345" fill="none" stroke="#333" stroke-width="2.2" stroke-dasharray="7,5" marker-end="url(#arr)"/>
+<path d="M1130,1295 L1150,1295" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+</svg>

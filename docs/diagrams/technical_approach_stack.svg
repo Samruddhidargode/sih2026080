@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrBig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+
+  <!-- ================= TITLE ================= -->
+  <text x="960" y="52" text-anchor="middle" font-size="30" font-weight="700" fill="#1A1A1A">Technical Approach &amp; Tech Stack</text>
+  <text x="960" y="84" text-anchor="middle" font-size="17" fill="#555555">Regime-aware AI/ML post-processing of IMD NWP rainfall forecasts: identify the regime → correct → blend</text>
+
+  <!-- ================= A. TECHNICAL APPROACH ================= -->
+  <text x="30" y="116" font-size="14" font-weight="700" letter-spacing="1.5" fill="#607D8B">A · TECHNICAL APPROACH</text>
+  <line x1="266" y1="111" x2="1890" y2="111" stroke="#CFD8DC" stroke-width="1.5"/>
+
+  <g transform="translate(0,-4)">
+    <!-- INPUTS -->
+    <rect x="30" y="132" width="290" height="308" rx="12" fill="#FFFFFF" stroke="#455A64" stroke-width="2"/>
+    <rect x="30" y="132" width="290" height="40" rx="12" fill="#455A64"/>
+    <rect x="30" y="152" width="290" height="20" fill="#455A64"/>
+    <text x="175" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">INPUTS</text>
+    <g fill="#263238">
+      <text x="46" y="204" font-size="14.5" font-weight="700">NWP forecasts</text>
+      <text x="46" y="224" font-size="13">IMD GFS T1534 (~12 km)</text>
+      <text x="46" y="242" font-size="13">NEPS-G ensemble, 23 members</text>
+      <text x="46" y="260" font-size="13">NCMRWF NCUM-G (phase 2)</text>
+      <text x="46" y="294" font-size="14.5" font-weight="700">Observations (truth)</text>
+      <text x="46" y="314" font-size="13">IMD 0.25° gridded rainfall</text>
+      <text x="46" y="332" font-size="13">AWS / ARG rain gauges</text>
+      <text x="46" y="366" font-size="14.5" font-weight="700">Reanalysis &amp; static</text>
+      <text x="46" y="386" font-size="13">IMDAA / ERA5 · terrain (DEM)</text>
+      <text x="46" y="404" font-size="13">coastline · district boundaries</text>
+    </g>
+
+    <!-- STAGE 1 -->
+    <rect x="364" y="132" width="330" height="308" rx="12" fill="#FFFFFF" stroke="#1F5FAD" stroke-width="2"/>
+    <rect x="364" y="132" width="330" height="40" rx="12" fill="#1F5FAD"/>
+    <rect x="364" y="152" width="330" height="20" fill="#1F5FAD"/>
+    <text x="529" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">STAGE 1 · IDENTIFY THE REGIME</text>
+    <rect x="376" y="184" width="306" height="90" rx="8" fill="#E8F0FB" stroke="#1F5FAD" stroke-width="1.2"/>
+    <rect x="376" y="292" width="306" height="76" rx="8" fill="#E8F0FB" stroke="#1F5FAD" stroke-width="1.2"/>
+    <g text-anchor="middle" fill="#123A6B">
+      <text x="529" y="208" font-size="14.5" font-weight="700">Physics detectors</text>
+      <text x="529" y="228" font-size="12.5">depression / cyclone tracker</text>
+      <text x="529" y="245" font-size="12.5">western-disturbance trough</text>
+      <text x="529" y="262" font-size="12.5">monsoon-trough position</text>
+      <text x="529" y="288" font-size="15" font-weight="700">+</text>
+      <text x="529" y="316" font-size="14.5" font-weight="700">LightGBM classifier</text>
+      <text x="529" y="336" font-size="12.5">forecast fields → regime %</text>
+      <text x="529" y="353" font-size="12.5">pre-trained on 40 yrs of reanalysis</text>
+      <text x="529" y="394" font-size="12" font-weight="700" fill="#1F5FAD">→ P(Active · Break · Depression · WD · Cyclone)</text>
+      <text x="529" y="414" font-size="12" font-weight="700" fill="#1F5FAD">+ orographic / coastal strength per box</text>
+    </g>
+
+    <!-- STAGE 2 -->
+    <rect x="738" y="132" width="400" height="308" rx="12" fill="#FFFFFF" stroke="#6A3FA0" stroke-width="2"/>
+    <rect x="738" y="132" width="400" height="40" rx="12" fill="#6A3FA0"/>
+    <rect x="738" y="152" width="400" height="20" fill="#6A3FA0"/>
+    <text x="938" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">STAGE 2 · CORRECT WITH 4 EXPERTS</text>
+    <g fill="#EFE8F8" stroke="#6A3FA0" stroke-width="1.2">
+      <rect x="750" y="184" width="184" height="98" rx="8"/>
+      <rect x="942" y="184" width="184" height="98" rx="8"/>
+      <rect x="750" y="292" width="184" height="98" rx="8"/>
+      <rect x="942" y="292" width="184" height="98" rx="8" fill="#E2D5F3" stroke-width="2"/>
+    </g>
+    <g text-anchor="middle" fill="#3E2463">
+      <text x="842" y="208" font-size="15" font-weight="700">E0</text>
+      <text x="842" y="230" font-size="14" font-weight="700">Quantile mapping</text>
+      <text x="842" y="250" font-size="12">single-method baseline</text>
+      <text x="842" y="266" font-size="12">&amp; safe fallback</text>
+
+      <text x="1034" y="208" font-size="15" font-weight="700">E1</text>
+      <text x="1034" y="230" font-size="14" font-weight="700">Regime-wise QM</text>
+      <text x="1034" y="250" font-size="12">separate tables</text>
+      <text x="1034" y="266" font-size="12">for each regime</text>
+
+      <text x="842" y="316" font-size="15" font-weight="700">E2</text>
+      <text x="842" y="338" font-size="14" font-weight="700">LightGBM / CSGD</text>
+      <text x="842" y="358" font-size="12">full rain distribution</text>
+      <text x="842" y="374" font-size="12">from physical features</text>
+
+      <text x="1034" y="316" font-size="15" font-weight="700">E3</text>
+      <text x="1034" y="338" font-size="14" font-weight="700">U-Net (CNN)</text>
+      <text x="1034" y="358" font-size="12">moves misplaced rain</text>
+      <text x="1034" y="374" font-size="12">depressions · hills</text>
+
+      <text x="938" y="418" font-size="12.5" font-style="italic" font-weight="600" fill="#6A3FA0">each expert outputs a full rainfall distribution</text>
+    </g>
+
+    <!-- STAGE 3 -->
+    <rect x="1182" y="132" width="314" height="308" rx="12" fill="#FFFFFF" stroke="#0F7C7C" stroke-width="2"/>
+    <rect x="1182" y="132" width="314" height="40" rx="12" fill="#0F7C7C"/>
+    <rect x="1182" y="152" width="314" height="20" fill="#0F7C7C"/>
+    <text x="1339" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">STAGE 3 · BLEND &amp; CALIBRATE</text>
+    <g fill="#0B3F3F">
+      <text x="1198" y="204" font-size="14.5" font-weight="700">Mixture of experts</text>
+      <text x="1198" y="224" font-size="13">weights = regime probabilities</text>
+      <text x="1198" y="242" font-size="13">soft switch, no hard jumps</text>
+      <text x="1198" y="280" font-size="14.5" font-weight="700">Probability calibration</text>
+      <text x="1198" y="300" font-size="13">isotonic / logistic</text>
+      <text x="1198" y="318" font-size="13">“40%” comes true ~40% of the time</text>
+      <text x="1198" y="356" font-size="14.5" font-weight="700">Sanity checks + fallback</text>
+      <text x="1198" y="376" font-size="13">physical limits on every output</text>
+      <text x="1198" y="394" font-size="13">E0 → raw NWP if a stage fails</text>
+    </g>
+
+    <!-- OUTPUTS -->
+    <rect x="1540" y="132" width="350" height="308" rx="12" fill="#FFFFFF" stroke="#2E7D32" stroke-width="2"/>
+    <rect x="1540" y="132" width="350" height="40" rx="12" fill="#2E7D32"/>
+    <rect x="1540" y="152" width="350" height="20" fill="#2E7D32"/>
+    <text x="1715" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">OUTPUTS</text>
+    <g fill="#1B4D1E">
+      <text x="1556" y="204" font-size="14.5" font-weight="700">Bias-corrected rainfall</text>
+      <text x="1556" y="224" font-size="13">0.25° grid · Day 1 to Day 5</text>
+      <text x="1556" y="262" font-size="14.5" font-weight="700">Heavy-rain probability</text>
+      <text x="1556" y="282" font-size="13">P(≥64.5 · ≥115.6 · ≥204.5 mm)</text>
+      <text x="1556" y="320" font-size="14.5" font-weight="700">District product</text>
+      <text x="1556" y="340" font-size="13">table + map with warning colours</text>
+      <text x="1556" y="392" font-size="14.5" font-weight="700">Verification report</text>
+      <text x="1556" y="412" font-size="13">RMSE · ETS · CSI · POD · FAR · FSS</text>
+    </g>
+    <rect x="1556" y="350" width="22" height="12" rx="2" fill="#43A047"/>
+    <rect x="1582" y="350" width="22" height="12" rx="2" fill="#F2C200"/>
+    <rect x="1608" y="350" width="22" height="12" rx="2" fill="#EF7D00"/>
+    <rect x="1634" y="350" width="22" height="12" rx="2" fill="#D32F2F"/>
+
+    <!-- arrows -->
+    <g stroke="#555555" stroke-width="5" fill="none" marker-end="url(#arrBig)">
+      <line x1="323" y1="286" x2="359" y2="286"/>
+      <line x1="697" y1="286" x2="733" y2="286"/>
+      <line x1="1141" y1="286" x2="1177" y2="286"/>
+      <line x1="1499" y1="286" x2="1535" y2="286"/>
+    </g>
+
+    <!-- key design choices -->
+    <g fill="#F3F5F7" stroke="#CFD8DC" stroke-width="1.5">
+      <rect x="30" y="454" width="296" height="44" rx="22"/>
+      <rect x="342" y="454" width="296" height="44" rx="22"/>
+      <rect x="654" y="454" width="296" height="44" rx="22"/>
+      <rect x="966" y="454" width="296" height="44" rx="22"/>
+      <rect x="1278" y="454" width="296" height="44" rx="22"/>
+      <rect x="1590" y="454" width="300" height="44" rx="22"/>
+    </g>
+    <g fill="#2E7D32">
+      <circle cx="54" cy="476" r="10"/><circle cx="366" cy="476" r="10"/><circle cx="678" cy="476" r="10"/>
+      <circle cx="990" cy="476" r="10"/><circle cx="1302" cy="476" r="10"/><circle cx="1614" cy="476" r="10"/>
+    </g>
+    <g stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="49,476 53,480 59,471"/><polyline points="361,476 365,480 371,471"/><polyline points="673,476 677,480 683,471"/>
+      <polyline points="985,476 989,480 995,471"/><polyline points="1297,476 1301,480 1307,471"/><polyline points="1609,476 1613,480 1619,471"/>
+    </g>
+    <g font-size="13" font-weight="600" fill="#263238">
+      <text x="72" y="481">Soft regime blending, no hard switch</text>
+      <text x="384" y="481">Probabilistic output, not one number</text>
+      <text x="696" y="481">Heavy-rain weighted loss + extreme tail</text>
+      <text x="1008" y="481">Year-wise validation (leave-one-year-out)</text>
+      <text x="1320" y="481">Fallback at every stage</text>
+      <text x="1632" y="481">Forecaster stays in the loop</text>
+    </g>
+  </g>
+
+  <!-- ================= B. TECH STACK ================= -->
+  <text x="30" y="530" font-size="14" font-weight="700" letter-spacing="1.5" fill="#607D8B">B · TECH STACK</text>
+  <line x1="158" y1="525" x2="1890" y2="525" stroke="#CFD8DC" stroke-width="1.5"/>
+
+  <!-- card frames -->
+  <g fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5">
+    <rect x="30" y="544" width="604" height="191" rx="12"/>
+    <rect x="658" y="544" width="604" height="191" rx="12"/>
+    <rect x="1286" y="544" width="604" height="191" rx="12"/>
+    <rect x="30" y="751" width="604" height="191" rx="12"/>
+    <rect x="658" y="751" width="604" height="191" rx="12"/>
+    <rect x="1286" y="751" width="604" height="191" rx="12"/>
+  </g>
+  <rect x="30" y="544" width="8" height="191" rx="4" fill="#1F5FAD"/>
+  <rect x="658" y="544" width="8" height="191" rx="4" fill="#6A3FA0"/>
+  <rect x="1286" y="544" width="8" height="191" rx="4" fill="#0F7C7C"/>
+  <rect x="30" y="751" width="8" height="191" rx="4" fill="#455A64"/>
+  <rect x="658" y="751" width="8" height="191" rx="4" fill="#3949AB"/>
+  <rect x="1286" y="751" width="8" height="191" rx="4" fill="#1B3A57"/>
+
+  <!-- card titles -->
+  <g font-size="17" font-weight="700">
+    <text x="56" y="578" fill="#1F5FAD">Data handling</text>
+    <text x="684" y="578" fill="#6A3FA0">Machine learning</text>
+    <text x="1312" y="578" fill="#0F7C7C">Meteorology &amp; verification</text>
+    <text x="56" y="785" fill="#455A64">Storage &amp; versioning</text>
+    <text x="684" y="785" fill="#3949AB">Pipeline &amp; serving</text>
+    <text x="1312" y="785" fill="#1B3A57">Dashboard &amp; monitoring</text>
+  </g>
+  <g font-size="13" fill="#666666">
+    <text x="56" y="600">read, align, regrid and store gridded weather data</text>
+    <text x="684" y="600">regime classifier, correction experts, calibration, explanations</text>
+    <text x="1312" y="600">track weather systems and compute skill scores</text>
+    <text x="56" y="807">raw archive, forecasts, district geometry, frozen model versions</text>
+    <text x="684" y="807">automated daily runs, APIs and map layers</text>
+    <text x="1312" y="807">forecaster review, interactive maps, system health</text>
+  </g>
+
+  <!-- chips: card 1 (blue) -->
+  <g fill="#E8F0FB" stroke="#1F5FAD" stroke-width="1.3">
+    <rect x="56" y="616" width="70" height="32" rx="16"/>
+    <rect x="136" y="616" width="70" height="32" rx="16"/>
+    <rect x="216" y="616" width="126" height="32" rx="16"/>
+    <rect x="352" y="616" width="214" height="32" rx="16"/>
+    <rect x="56" y="658" width="46" height="32" rx="16"/>
+    <rect x="112" y="658" width="150" height="32" rx="16"/>
+    <rect x="272" y="658" width="182" height="32" rx="16"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#123A6B">
+    <text x="91" y="637">Python</text>
+    <text x="171" y="637">xarray</text>
+    <text x="279" y="637">NetCDF / Zarr</text>
+    <text x="459" y="637">GRIB2 · cfgrib / ecCodes</text>
+    <text x="79" y="679">CDO</text>
+    <text x="187" y="679">xESMF regridding</text>
+    <text x="363" y="679">geopandas · rasterio</text>
+  </g>
+
+  <!-- chips: card 2 (purple) -->
+  <g fill="#EFE8F8" stroke="#6A3FA0" stroke-width="1.3">
+    <rect x="684" y="616" width="86" height="32" rx="16"/>
+    <rect x="780" y="616" width="78" height="32" rx="16"/>
+    <rect x="868" y="616" width="110" height="32" rx="16"/>
+    <rect x="988" y="616" width="118" height="32" rx="16"/>
+    <rect x="684" y="658" width="174" height="32" rx="16"/>
+    <rect x="868" y="658" width="190" height="32" rx="16"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#3E2463">
+    <text x="727" y="637">LightGBM</text>
+    <text x="819" y="637">PyTorch</text>
+    <text x="923" y="637">U-Net (CNN)</text>
+    <text x="1047" y="637">scikit-learn</text>
+    <text x="771" y="679">SHAP (explanations)</text>
+    <text x="963" y="679">SciPy (extreme tails)</text>
+  </g>
+
+  <!-- chips: card 3 (teal) -->
+  <g fill="#E3F4F3" stroke="#0F7C7C" stroke-width="1.3">
+    <rect x="1312" y="616" width="142" height="32" rx="16"/>
+    <rect x="1464" y="616" width="62" height="32" rx="16"/>
+    <rect x="1536" y="616" width="102" height="32" rx="16"/>
+    <rect x="1648" y="616" width="70" height="32" rx="16"/>
+    <rect x="1312" y="658" width="110" height="32" rx="16"/>
+    <rect x="1432" y="658" width="126" height="32" rx="16"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#0B3F3F">
+    <text x="1383" y="637">TempestExtremes</text>
+    <text x="1495" y="637">MetPy</text>
+    <text x="1587" y="637">MET (NCAR)</text>
+    <text x="1683" y="637">imdlib</text>
+    <text x="1367" y="679">xskillscore</text>
+    <text x="1495" y="679">pysteps (FSS)</text>
+  </g>
+
+  <!-- chips: card 4 (slate) -->
+  <g fill="#ECEFF1" stroke="#455A64" stroke-width="1.3">
+    <rect x="56" y="823" width="182" height="32" rx="16"/>
+    <rect x="248" y="823" width="166" height="32" rx="16"/>
+    <rect x="424" y="823" width="142" height="32" rx="16"/>
+    <rect x="56" y="865" width="94" height="32" rx="16"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#263238">
+    <text x="147" y="844">PostgreSQL + PostGIS</text>
+    <text x="331" y="844">MinIO object store</text>
+    <text x="495" y="844">MLflow registry</text>
+    <text x="103" y="886">Git + DVC</text>
+  </g>
+
+  <!-- chips: card 5 (indigo) -->
+  <g fill="#E8EAF6" stroke="#3949AB" stroke-width="1.3">
+    <rect x="684" y="823" width="150" height="32" rx="16"/>
+    <rect x="844" y="823" width="70" height="32" rx="16"/>
+    <rect x="924" y="823" width="78" height="32" rx="16"/>
+    <rect x="1012" y="823" width="142" height="32" rx="16"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1F2A6B">
+    <text x="759" y="844">ecFlow / Airflow</text>
+    <text x="879" y="844">Docker</text>
+    <text x="963" y="844">FastAPI</text>
+    <text x="1083" y="844">GeoServer (WMS)</text>
+  </g>
+
+  <!-- chips: card 6 (dark) -->
+  <g fill="#E3EAF1" stroke="#1B3A57" stroke-width="1.3">
+    <rect x="1312" y="823" width="94" height="32" rx="16"/>
+    <rect x="1416" y="823" width="150" height="32" rx="16"/>
+    <rect x="1576" y="823" width="70" height="32" rx="16"/>
+    <rect x="1656" y="823" width="182" height="32" rx="16"/>
+  </g>
+  <g text-anchor="middle" font-size="13.5" font-weight="600" fill="#1B3A57">
+    <text x="1359" y="844">Streamlit</text>
+    <text x="1491" y="844">Leaflet / Folium</text>
+    <text x="1611" y="844">Plotly</text>
+    <text x="1747" y="844">Prometheus + Grafana</text>
+  </g>
+
+  <!-- why lines -->
+  <g font-size="13" font-style="italic" fill="#455A64">
+    <text x="56" y="716"><tspan font-weight="700">Why: </tspan>standard formats IMD / NCMRWF already use (GRIB2, NetCDF)</text>
+    <text x="684" y="716"><tspan font-weight="700">Why: </tspan>LightGBM for limited seasons of data; CNN only where spatial patterns matter</text>
+    <text x="1312" y="716"><tspan font-weight="700">Why: </tspan>established, peer-reviewed tools that IMD scientists already trust</text>
+    <text x="56" y="923"><tspan font-weight="700">Why: </tspan>every forecast traceable to its exact data and model version</text>
+    <text x="684" y="923"><tspan font-weight="700">Why: </tspan>runs unattended every day; ecFlow is standard at weather centres</text>
+    <text x="1312" y="923"><tspan font-weight="700">Why: </tspan>forecasters review before issue; operators alerted on any failure</text>
+  </g>
+
+  <!-- ================= FOOTER ================= -->
+  <rect x="30" y="958" width="1860" height="80" rx="10" fill="#F3F5F7"/>
+  <text x="960" y="990" text-anchor="middle" font-size="15.5" fill="#1A1A1A"><tspan font-weight="700">Deployment: </tspan>on-premise at IMD / NCMRWF · Docker containers · CPU nodes for daily runs + 1–2 NVIDIA GPUs for the U-Net · fully open-source stack</text>
+  <text x="960" y="1018" text-anchor="middle" font-size="13.5" fill="#555555">Goal: better district-level heavy-rain forecasts than raw NWP and a single bias-correction method, proven on held-out years with RMSE, ETS, CSI, POD, FAR and FSS</text>
+</svg>

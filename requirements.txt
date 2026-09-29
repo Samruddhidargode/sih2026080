@@ -1,0 +1,43 @@
+# --- core numerics / arrays ---
+numpy>=1.26
+pandas>=2.1,<3.0          # 2.2.3 verified; 3.0.6 DLLs blocked by Windows Smart App Control here
+lightgbm>=4.0            # prototype v2 (proto/): E2 expert + day-regime classifier
+xarray>=2024.1
+netCDF4
+zarr<3
+scipy
+pyyaml
+tqdm
+
+# --- data ingestion ---
+herbie-data>=2024.3     # GFS from NOAA AWS Open Data (downloads only the GRIB bytes we ask for)
+cfgrib                  # GRIB -> xarray
+eccodes                 # binary wheels; if this fails on Windows use Miniforge: conda install -c conda-forge eccodes
+imdlib                  # IMD 0.25 deg gridded rainfall, no login
+cdsapi                  # ERA5 (optional - only for label cross-checks)
+requests
+
+# --- geospatial ---
+rioxarray
+rasterio
+geopandas>=0.14
+shapely>=2.0
+pyproj
+
+# --- ML ---
+torch>=2.2
+torchvision
+scikit-learn
+
+# --- verification ---
+xskillscore
+pysteps                 # only for FSS; we fall back to our own implementation if unavailable
+
+# --- dashboard ---
+streamlit
+folium
+streamlit-folium
+plotly
+
+# --- dev ---
+pytest

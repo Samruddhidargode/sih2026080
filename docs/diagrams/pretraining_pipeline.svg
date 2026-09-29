@@ -1,0 +1,338 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444444"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C62828"/>
+    </marker>
+    <marker id="arrPur" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6A3FA0"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+
+  <!-- ================= TITLE ================= -->
+  <text x="960" y="56" text-anchor="middle" font-size="30" font-weight="700" fill="#1A1A1A">Pre-Training Pipeline — Regime-Aware Rainfall Post-Processing</text>
+  <text x="960" y="90" text-anchor="middle" font-size="17" fill="#555555">How the system learns from historical data before it goes live</text>
+
+  <!-- ================= LANES ================= -->
+  <rect x="30" y="120" width="1860" height="200" rx="12" fill="#EEF3FB"/>
+  <rect x="30" y="335" width="1860" height="200" rx="12" fill="#EAF6F5"/>
+  <rect x="30" y="550" width="1860" height="200" rx="12" fill="#F3EEFA"/>
+  <rect x="30" y="765" width="1860" height="200" rx="12" fill="#EDF6EE"/>
+
+  <g text-anchor="middle" fill="#FFFFFF" font-weight="700">
+    <rect x="30" y="120" width="160" height="200" rx="12" fill="#1F5FAD"/>
+    <text x="110" y="192" font-size="38">1</text>
+    <text x="110" y="230" font-size="17">DATA</text>
+    <text x="110" y="252" font-size="17">FOUNDATION</text>
+
+    <rect x="30" y="335" width="160" height="200" rx="12" fill="#0F7C7C"/>
+    <text x="110" y="407" font-size="38">2</text>
+    <text x="110" y="445" font-size="17">PREPARE</text>
+    <text x="110" y="467" font-size="17">TO LEARN</text>
+
+    <rect x="30" y="550" width="160" height="200" rx="12" fill="#6A3FA0"/>
+    <text x="110" y="622" font-size="38">3</text>
+    <text x="110" y="660" font-size="17">3-STAGE</text>
+    <text x="110" y="682" font-size="17">MODEL</text>
+
+    <rect x="30" y="765" width="160" height="200" rx="12" fill="#2E7D32"/>
+    <text x="110" y="837" font-size="38">4</text>
+    <text x="110" y="875" font-size="17">PROVE &amp;</text>
+    <text x="110" y="897" font-size="17">RELEASE</text>
+  </g>
+
+  <!-- ================= LANE 1 ================= -->
+  <!-- data source cylinders -->
+  <g stroke="#1F5FAD" stroke-width="2">
+    <path d="M215,142 L215,202 A75,10 0 0 0 365,202 L365,142" fill="#DCE8F8"/>
+    <ellipse cx="290" cy="142" rx="75" ry="10" fill="#C3D6F2"/>
+    <path d="M375,142 L375,202 A75,10 0 0 0 525,202 L525,142" fill="#DCE8F8"/>
+    <ellipse cx="450" cy="142" rx="75" ry="10" fill="#C3D6F2"/>
+    <path d="M215,238 L215,298 A75,10 0 0 0 365,298 L365,238" fill="#DCE8F8"/>
+    <ellipse cx="290" cy="238" rx="75" ry="10" fill="#C3D6F2"/>
+    <path d="M375,238 L375,298 A75,10 0 0 0 525,298 L525,238" fill="#DCE8F8"/>
+    <ellipse cx="450" cy="238" rx="75" ry="10" fill="#C3D6F2"/>
+  </g>
+  <g text-anchor="middle" fill="#123A6B">
+    <text x="290" y="178" font-size="14" font-weight="700">NWP forecasts</text>
+    <text x="290" y="196" font-size="12">GFS · NCUM · NEPS</text>
+    <text x="450" y="178" font-size="14" font-weight="700">Rain observations</text>
+    <text x="450" y="196" font-size="12">gauges · satellite</text>
+    <text x="290" y="274" font-size="14" font-weight="700">Reanalysis</text>
+    <text x="290" y="292" font-size="12">IMDAA · ERA5</text>
+    <text x="450" y="274" font-size="14" font-weight="700">Maps &amp; tracks</text>
+    <text x="450" y="292" font-size="12">terrain · districts</text>
+  </g>
+
+  <!-- P1..P4 -->
+  <g>
+    <rect x="565" y="168" width="215" height="104" rx="12" fill="#1F5FAD"/>
+    <rect x="815" y="168" width="215" height="104" rx="12" fill="#1F5FAD"/>
+    <rect x="1065" y="168" width="215" height="104" rx="12" fill="#1F5FAD"/>
+    <rect x="1315" y="168" width="215" height="104" rx="12" fill="#1F5FAD"/>
+  </g>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="672" y="194" font-size="13" font-weight="700" opacity="0.8">P1</text>
+    <text x="672" y="220" font-size="18" font-weight="700">Collect &amp; Archive</text>
+    <text x="672" y="242" font-size="13">years of past forecasts</text>
+    <text x="672" y="259" font-size="13">and observations</text>
+
+    <text x="922" y="194" font-size="13" font-weight="700" opacity="0.8">P2</text>
+    <text x="922" y="220" font-size="18" font-weight="700">Align Time</text>
+    <text x="922" y="242" font-size="13">same 24-hour window</text>
+    <text x="922" y="259" font-size="13">08:30 – 08:30 IST</text>
+
+    <text x="1172" y="194" font-size="13" font-weight="700" opacity="0.8">P3</text>
+    <text x="1172" y="220" font-size="18" font-weight="700">Quality Control</text>
+    <text x="1172" y="242" font-size="13">flag errors,</text>
+    <text x="1172" y="259" font-size="13">keep real extremes</text>
+
+    <text x="1422" y="194" font-size="13" font-weight="700" opacity="0.8">P4</text>
+    <text x="1422" y="220" font-size="18" font-weight="700">Common Grid</text>
+    <text x="1422" y="242" font-size="13">everything on the</text>
+    <text x="1422" y="259" font-size="13">IMD 0.25° grid</text>
+  </g>
+
+  <!-- aligned data cube -->
+  <g stroke="#1F5FAD" stroke-width="2">
+    <path d="M1575,180 L1575,260 A95,10 0 0 0 1765,260 L1765,180" fill="#DCE8F8"/>
+    <ellipse cx="1670" cy="180" rx="95" ry="10" fill="#C3D6F2"/>
+  </g>
+  <text x="1670" y="222" text-anchor="middle" font-size="15" font-weight="700" fill="#123A6B">Aligned data cube</text>
+  <text x="1670" y="242" text-anchor="middle" font-size="12" fill="#123A6B">one grid · one time base</text>
+
+  <!-- lane 1 arrows -->
+  <g stroke="#444444" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+    <line x1="527" y1="220" x2="562" y2="220"/>
+    <line x1="782" y1="220" x2="812" y2="220"/>
+    <line x1="1032" y1="220" x2="1062" y2="220"/>
+    <line x1="1282" y1="220" x2="1312" y2="220"/>
+    <line x1="1532" y1="220" x2="1572" y2="220"/>
+    <!-- lane 1 -> lane 2 (down to P6 branch) -->
+    <polyline points="1670,271 1670,327 250,327 250,482 289,482"/>
+    <line x1="250" y1="388" x2="289" y2="388"/>
+  </g>
+  <circle cx="250" cy="388" r="5" fill="#444444"/>
+
+  <!-- ================= LANE 2 ================= -->
+  <text x="236" y="435" text-anchor="middle" font-size="12" font-style="italic" fill="#0F7C7C" transform="rotate(-90 236 435)">in parallel</text>
+
+  <rect x="292" y="350" width="340" height="76" rx="12" fill="#0F7C7C"/>
+  <rect x="292" y="444" width="340" height="76" rx="12" fill="#0F7C7C"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="462" y="380" font-size="17" font-weight="700">P5 · Label Regimes</text>
+    <text x="462" y="401" font-size="13">Active · Break · Depression · W. Disturbance</text>
+    <text x="462" y="417" font-size="13">Orographic · Coastal · Plains</text>
+
+    <text x="462" y="474" font-size="17" font-weight="700">P6 · Build Features</text>
+    <text x="462" y="495" font-size="13">moisture flow · mountain uplift</text>
+    <text x="462" y="511" font-size="13">ensemble spread · climatology</text>
+  </g>
+
+  <!-- join -->
+  <g stroke="#444444" stroke-width="2.5" fill="none">
+    <polyline points="632,388 670,388 670,482 632,482"/>
+    <line x1="670" y1="435" x2="702" y2="435" marker-end="url(#arr)"/>
+  </g>
+  <circle cx="670" cy="435" r="5" fill="#444444"/>
+
+  <!-- P7 -->
+  <rect x="705" y="383" width="240" height="104" rx="12" fill="#0F7C7C"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="825" y="409" font-size="13" font-weight="700" opacity="0.8">P7</text>
+    <text x="825" y="435" font-size="18" font-weight="700">Split by Year</text>
+    <text x="825" y="457" font-size="13">whole years,</text>
+    <text x="825" y="474" font-size="13">never random days</text>
+  </g>
+
+  <!-- year bar -->
+  <text x="1257" y="400" text-anchor="middle" font-size="12" fill="#0F7C7C" font-style="italic">example: 10 years of archived forecasts</text>
+  <g stroke="#0F7C7C" stroke-width="1.5">
+    <rect x="990" y="410" width="48" height="50" rx="5" fill="#A8DAD6"/>
+    <rect x="1044" y="410" width="48" height="50" rx="5" fill="#A8DAD6"/>
+    <rect x="1098" y="410" width="48" height="50" rx="5" fill="#A8DAD6"/>
+    <rect x="1152" y="410" width="48" height="50" rx="5" fill="#A8DAD6"/>
+    <rect x="1206" y="410" width="48" height="50" rx="5" fill="#A8DAD6"/>
+    <rect x="1260" y="410" width="48" height="50" rx="5" fill="#A8DAD6"/>
+    <rect x="1314" y="410" width="48" height="50" rx="5" fill="#A8DAD6"/>
+    <rect x="1368" y="410" width="48" height="50" rx="5" fill="#A8DAD6"/>
+    <rect x="1422" y="410" width="48" height="50" rx="5" fill="#0B4F4F"/>
+    <rect x="1476" y="410" width="48" height="50" rx="5" fill="#0B4F4F"/>
+  </g>
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#0B3F3F">
+    <text x="1014" y="440">2016</text><text x="1068" y="440">2017</text><text x="1122" y="440">2018</text>
+    <text x="1176" y="440">2019</text><text x="1230" y="440">2020</text><text x="1284" y="440">2021</text>
+    <text x="1338" y="440">2022</text><text x="1392" y="440">2023</text>
+    <text x="1446" y="440" fill="#FFFFFF">2024</text><text x="1500" y="440" fill="#FFFFFF">2025</text>
+  </g>
+  <g stroke="#0F7C7C" stroke-width="1.5" fill="none">
+    <polyline points="990,466 990,472 1416,472 1416,466"/>
+    <polyline points="1422,466 1422,472 1524,472 1524,466"/>
+  </g>
+  <text x="1203" y="490" text-anchor="middle" font-size="13" font-weight="600" fill="#0F7C7C">train &amp; tune (leave-one-year-out)</text>
+  <text x="1473" y="490" text-anchor="middle" font-size="13" font-weight="700" fill="#0B4F4F">locked test</text>
+
+  <!-- training-ready dataset -->
+  <g stroke="#0F7C7C" stroke-width="2">
+    <path d="M1590,395 L1590,475 A95,10 0 0 0 1780,475 L1780,395" fill="#D5EFEC"/>
+    <ellipse cx="1685" cy="395" rx="95" ry="10" fill="#B5E1DC"/>
+  </g>
+  <text x="1685" y="436" text-anchor="middle" font-size="15" font-weight="700" fill="#0B3F3F">Training-ready dataset</text>
+  <text x="1685" y="456" text-anchor="middle" font-size="12" fill="#0B3F3F">labels + features by year</text>
+
+  <!-- lane 2 arrows -->
+  <g stroke="#444444" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+    <line x1="947" y1="435" x2="985" y2="435"/>
+    <line x1="1530" y1="435" x2="1587" y2="435"/>
+    <!-- lane 2 -> lane 3 -->
+    <polyline points="1685,486 1685,542 335,542 335,595"/>
+  </g>
+
+  <!-- ================= LANE 3 ================= -->
+  <!-- P8 -->
+  <rect x="215" y="598" width="240" height="104" rx="12" fill="#6A3FA0"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="335" y="624" font-size="13" font-weight="700" opacity="0.85">P8 · STAGE 1</text>
+    <text x="335" y="650" font-size="18" font-weight="700">Regime Classifier</text>
+    <text x="335" y="672" font-size="13">which regime will</text>
+    <text x="335" y="689" font-size="13">really occur? (in %)</text>
+  </g>
+
+  <!-- P9 container -->
+  <rect x="495" y="574" width="590" height="150" rx="12" fill="#FFFFFF" stroke="#6A3FA0" stroke-width="2.5"/>
+  <text x="790" y="598" text-anchor="middle" font-size="16" font-weight="700" fill="#6A3FA0">P9 · STAGE 2 — Correction Experts</text>
+  <g fill="#E9E0F5" stroke="#6A3FA0" stroke-width="1.5">
+    <rect x="511" y="610" width="132" height="104" rx="8"/>
+    <rect x="653" y="610" width="132" height="104" rx="8"/>
+    <rect x="795" y="610" width="132" height="104" rx="8"/>
+    <rect x="937" y="610" width="132" height="104" rx="8"/>
+  </g>
+  <g text-anchor="middle" fill="#3E2463">
+    <text x="577" y="638" font-size="17" font-weight="700">E0</text>
+    <text x="577" y="660" font-size="13">Quantile</text>
+    <text x="577" y="677" font-size="13">mapping</text>
+    <text x="577" y="694" font-size="13">(baseline)</text>
+
+    <text x="719" y="638" font-size="17" font-weight="700">E1</text>
+    <text x="719" y="660" font-size="13">Quantile</text>
+    <text x="719" y="677" font-size="13">mapping per</text>
+    <text x="719" y="694" font-size="13">regime</text>
+
+    <text x="861" y="638" font-size="17" font-weight="700">E2</text>
+    <text x="861" y="660" font-size="13">ML model:</text>
+    <text x="861" y="677" font-size="13">full rain</text>
+    <text x="861" y="694" font-size="13">distribution</text>
+
+    <text x="1003" y="638" font-size="17" font-weight="700">E3</text>
+    <text x="1003" y="660" font-size="13">U-Net:</text>
+    <text x="1003" y="677" font-size="13">fixes rain</text>
+    <text x="1003" y="694" font-size="13">location</text>
+  </g>
+
+  <!-- P10 -->
+  <rect x="1125" y="598" width="240" height="104" rx="12" fill="#6A3FA0"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="1245" y="624" font-size="13" font-weight="700" opacity="0.85">P10 · STAGE 3</text>
+    <text x="1245" y="650" font-size="18" font-weight="700">Blend &amp; Calibrate</text>
+    <text x="1245" y="672" font-size="13">weight experts by regime,</text>
+    <text x="1245" y="689" font-size="13">make % honest</text>
+  </g>
+
+  <!-- final forecast (output parallelogram) -->
+  <polygon points="1425,603 1700,603 1680,697 1405,697" fill="#FFFFFF" stroke="#6A3FA0" stroke-width="2.5"/>
+  <g text-anchor="middle" fill="#3E2463">
+    <text x="1552" y="635" font-size="16" font-weight="700">Final Forecast</text>
+    <text x="1552" y="656" font-size="13">corrected rainfall +</text>
+    <text x="1552" y="674" font-size="13">P(≥64.5, ≥115.6, ≥204.5 mm)</text>
+  </g>
+
+  <!-- lane 3 arrows -->
+  <g stroke="#444444" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+    <line x1="457" y1="650" x2="492" y2="650"/>
+    <line x1="1087" y1="650" x2="1122" y2="650"/>
+    <line x1="1367" y1="650" x2="1411" y2="650"/>
+    <!-- lane 3 -> lane 4 -->
+    <line x1="1552" y1="698" x2="1552" y2="802"/>
+  </g>
+  <!-- regime probabilities -> blend weights -->
+  <polyline points="280,702 280,738 1245,738 1245,705" fill="none" stroke="#6A3FA0" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrPur)"/>
+  <text x="292" y="731" font-size="12" font-style="italic" font-weight="600" fill="#6A3FA0">regime % → blend weights</text>
+
+  <!-- ================= LANE 4 (flows right → left) ================= -->
+  <!-- P11 -->
+  <rect x="1432" y="805" width="240" height="120" rx="12" fill="#2E7D32"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="1552" y="829" font-size="13" font-weight="700" opacity="0.85">P11</text>
+    <text x="1552" y="853" font-size="17" font-weight="700">Verify on Test Years</text>
+    <text x="1552" y="875" font-size="13">vs raw NWP &amp; single method</text>
+    <text x="1552" y="892" font-size="13">RMSE · ETS · CSI</text>
+    <text x="1552" y="909" font-size="13">POD · FAR · FSS</text>
+  </g>
+
+  <!-- P12 decision -->
+  <polygon points="1060,865 1195,777 1330,865 1195,953" fill="#2E7D32"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="1195" y="842" font-size="15" font-weight="700">P12 · Gate</text>
+    <text x="1195" y="862" font-size="13">Better than raw &amp;</text>
+    <text x="1195" y="878" font-size="13">single method?</text>
+    <text x="1195" y="894" font-size="13">No region worse?</text>
+  </g>
+
+  <!-- P13 -->
+  <rect x="780" y="813" width="240" height="104" rx="12" fill="#2E7D32"/>
+  <g text-anchor="middle" fill="#FFFFFF">
+    <text x="900" y="839" font-size="13" font-weight="700" opacity="0.85">P13</text>
+    <text x="900" y="865" font-size="18" font-weight="700">Model Registry</text>
+    <text x="900" y="887" font-size="13">freeze approved version</text>
+    <text x="900" y="904" font-size="13">versioned · rollback-ready</text>
+  </g>
+
+  <!-- terminal -->
+  <rect x="475" y="825" width="260" height="80" rx="40" fill="#1B3A57"/>
+  <text x="605" y="860" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">Operational System</text>
+  <text x="605" y="882" text-anchor="middle" font-size="12.5" fill="#DCE6F0">shadow season → live daily use</text>
+
+  <!-- lane 4 arrows -->
+  <g stroke="#444444" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+    <line x1="1430" y1="865" x2="1334" y2="865"/>
+    <line x1="1058" y1="865" x2="1024" y2="865"/>
+    <line x1="778" y1="865" x2="739" y2="865"/>
+  </g>
+  <text x="1041" y="855" text-anchor="middle" font-size="13" font-weight="700" fill="#2E7D32">YES</text>
+
+  <!-- NO loop -->
+  <polyline points="1195,777 1195,762 1300,762 1300,706" fill="none" stroke="#C62828" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrRed)"/>
+  <text x="1310" y="747" font-size="13" font-weight="700" fill="#C62828">NO → fix &amp; re-test</text>
+
+  <!-- legend -->
+  <rect x="215" y="775" width="225" height="180" rx="10" fill="#FFFFFF" stroke="#B8C4B9" stroke-width="1.5"/>
+  <text x="230" y="795" font-size="13" font-weight="700" fill="#333333">Legend</text>
+  <g stroke="#555555" stroke-width="1.5" fill="#E4E4E4">
+    <path d="M232,805 L232,815 A13,4 0 0 0 258,815 L258,805"/>
+    <ellipse cx="245" cy="805" rx="13" ry="4" fill="#CFCFCF"/>
+    <rect x="232" y="826" width="26" height="15" rx="4"/>
+    <polygon points="232,855 245,847 258,855 245,863"/>
+    <polygon points="236,869 260,869 256,883 232,883" fill="#FFFFFF"/>
+    <rect x="232" y="890" width="26" height="14" rx="7" fill="#1B3A57" stroke="none"/>
+  </g>
+  <line x1="232" y1="918" x2="258" y2="918" stroke="#444444" stroke-width="2.5" marker-end="url(#arr)"/>
+  <line x1="232" y1="939" x2="258" y2="939" stroke="#C62828" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#arrRed)"/>
+  <g font-size="12.5" fill="#333333">
+    <text x="270" y="816">Data store</text>
+    <text x="270" y="838">Processing step</text>
+    <text x="270" y="859">Decision</text>
+    <text x="270" y="880">Output</text>
+    <text x="270" y="901">Hand-off to operations</text>
+    <text x="270" y="922">Flow</text>
+    <text x="270" y="943">Loop back if gate fails</text>
+  </g>
+
+  <!-- ================= FOOTER ================= -->
+  <rect x="30" y="982" width="1860" height="72" rx="10" fill="#F3F5F7"/>
+  <text x="960" y="1012" text-anchor="middle" font-size="17" fill="#1A1A1A"><tspan font-weight="700">Core idea: </tspan>identify the weather regime first → correct with the method suited to that regime → blend softly → prove it on unseen years</text>
+  <text x="960" y="1038" text-anchor="middle" font-size="13" fill="#555555">IMD daily thresholds: Heavy ≥ 64.5 mm · Very heavy ≥ 115.6 mm · Extremely heavy ≥ 204.5 mm   |   Truth: IMD 0.25° gridded rainfall   |   Inputs: IMD GFS, NCMRWF NCUM &amp; NEPS</text>
+</svg>

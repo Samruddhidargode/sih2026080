@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+  <defs>
+    <clipPath id="tbl"><rect x="30" y="502" width="1860" height="416" rx="12"/></clipPath>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+
+  <!-- TITLE -->
+  <text x="960" y="50" text-anchor="middle" font-size="30" font-weight="700" fill="#1A1A1A">Benefits &amp; Impact</text>
+  <text x="960" y="82" text-anchor="middle" font-size="17" fill="#555555">Right rain, right place, right time, for the people who act on it</text>
+
+  <!-- ============ A. WHO IT HELPS / GAP / FILL ============ -->
+  <text x="30" y="112" font-size="14" font-weight="700" letter-spacing="1.5" fill="#607D8B">WHO IT HELPS  →  THE GAP TODAY  →  HOW WE FILL IT</text>
+  <line x1="505" y1="107" x2="1890" y2="107" stroke="#CFD8DC" stroke-width="1.5"/>
+
+  <g fill="#FFFFFF" stroke-width="2">
+    <rect x="30" y="122" width="450" height="344" rx="12" stroke="#1F5FAD"/>
+    <rect x="500" y="122" width="450" height="344" rx="12" stroke="#6A3FA0"/>
+    <rect x="970" y="122" width="450" height="344" rx="12" stroke="#2E7D32"/>
+    <rect x="1440" y="122" width="450" height="344" rx="12" stroke="#E08E0B"/>
+  </g>
+
+  <!-- icons -->
+  <circle cx="76" cy="159" r="28" fill="#1F5FAD"/>
+  <g fill="#FFFFFF">
+    <circle cx="69" cy="156" r="7"/><circle cx="79" cy="152" r="9"/><circle cx="87" cy="158" r="6"/>
+    <rect x="62" y="156" width="31" height="8" rx="4"/>
+  </g>
+  <g stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round">
+    <line x1="68" y1="170" x2="66" y2="176"/><line x1="77" y1="170" x2="75" y2="176"/><line x1="86" y1="170" x2="84" y2="176"/>
+  </g>
+
+  <circle cx="546" cy="159" r="28" fill="#6A3FA0"/>
+  <path d="M546,143 L559,148 V159 C559,168 553,173 546,177 C539,173 533,168 533,159 V148 Z" fill="#FFFFFF"/>
+  <polyline points="540,159 545,164 553,154" fill="none" stroke="#6A3FA0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <circle cx="1016" cy="159" r="28" fill="#2E7D32"/>
+  <line x1="1016" y1="175" x2="1016" y2="153" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <path d="M1016,165 C1004,165 1003,153 1003,153 C1013,152 1016,158 1016,165 Z" fill="#FFFFFF"/>
+  <path d="M1016,158 C1028,158 1029,145 1029,145 C1019,144 1016,151 1016,158 Z" fill="#FFFFFF"/>
+
+  <circle cx="1486" cy="159" r="28" fill="#E08E0B"/>
+  <g fill="#FFFFFF">
+    <circle cx="1486" cy="150" r="5.5"/><path d="M1476,170 a10,9 0 0 1 20,0 z"/>
+    <circle cx="1472" cy="156" r="4.5"/><path d="M1464,172 a8,7 0 0 1 16,0 z"/>
+    <circle cx="1500" cy="156" r="4.5"/><path d="M1492,172 a8,7 0 0 1 16,0 z"/>
+  </g>
+
+  <g font-size="19" font-weight="700">
+    <text x="118" y="153" fill="#1F5FAD">Forecasters</text>
+    <text x="588" y="153" fill="#6A3FA0">Disaster managers</text>
+    <text x="1058" y="153" fill="#2E7D32">Sector users</text>
+    <text x="1528" y="153" fill="#B26A00">Citizens</text>
+  </g>
+  <g font-size="12.5" fill="#666666">
+    <text x="118" y="172">IMD HQ, regional &amp; state</text><text x="118" y="188">meteorological centres</text>
+    <text x="588" y="172">NDMA · SDMAs · district</text><text x="588" y="188">collectors · NDRF</text>
+    <text x="1058" y="172">farmers (agromet) · CWC &amp; dams</text><text x="1058" y="188">cities · railways · power</text>
+    <text x="1528" y="172">people in flood- and</text><text x="1528" y="188">landslide-prone districts</text>
+  </g>
+
+  <!-- gap boxes -->
+  <g fill="#FDECEA">
+    <rect x="46" y="204" width="418" height="86" rx="8"/>
+    <rect x="516" y="204" width="418" height="86" rx="8"/>
+    <rect x="986" y="204" width="418" height="86" rx="8"/>
+    <rect x="1456" y="204" width="418" height="86" rx="8"/>
+  </g>
+  <g font-size="11" font-weight="700" letter-spacing="1.2" fill="#C62828">
+    <text x="62" y="223">GAP TODAY</text><text x="532" y="223">GAP TODAY</text><text x="1002" y="223">GAP TODAY</text><text x="1472" y="223">GAP TODAY</text>
+  </g>
+  <g font-size="14" fill="#7F1D1D">
+    <text x="62" y="244">Raw model rain is biased, and one</text><text x="62" y="262">correction is used for every kind</text><text x="62" y="280">of weather</text>
+    <text x="532" y="244">Heavy rain under-forecast or placed</text><text x="532" y="262">in the wrong district, with no</text><text x="532" y="280">confidence level</text>
+    <text x="1002" y="244">Model output is a grid, hard to act</text><text x="1002" y="262">on at district and village level</text>
+    <text x="1472" y="244">Missed warnings and false alarms</text><text x="1472" y="262">erode trust in forecasts</text>
+  </g>
+
+  <!-- arrows down -->
+  <g>
+    <polygon points="245,296 265,296 265,306 275,306 255,318 235,306 245,306" fill="#1F5FAD"/>
+    <polygon points="715,296 735,296 735,306 745,306 725,318 705,306 715,306" fill="#6A3FA0"/>
+    <polygon points="1185,296 1205,296 1205,306 1215,306 1195,318 1175,306 1185,306" fill="#2E7D32"/>
+    <polygon points="1655,296 1675,296 1675,306 1685,306 1665,318 1645,306 1655,306" fill="#E08E0B"/>
+  </g>
+
+  <!-- fill boxes -->
+  <rect x="46" y="324" width="418" height="126" rx="8" fill="#E8F0FB"/>
+  <rect x="516" y="324" width="418" height="126" rx="8" fill="#EFE8F8"/>
+  <rect x="986" y="324" width="418" height="126" rx="8" fill="#E8F4E9"/>
+  <rect x="1456" y="324" width="418" height="126" rx="8" fill="#FFF4E0"/>
+  <g font-size="11" font-weight="700" letter-spacing="1.2">
+    <text x="62" y="344" fill="#1F5FAD">HOW WE FILL IT</text>
+    <text x="532" y="344" fill="#6A3FA0">HOW WE FILL IT</text>
+    <text x="1002" y="344" fill="#2E7D32">HOW WE FILL IT</text>
+    <text x="1472" y="344" fill="#B26A00">HOW WE FILL IT</text>
+  </g>
+  <g font-size="15.5" font-weight="600">
+    <text x="62" y="370" fill="#123A6B">Regime-aware correction, with the</text>
+    <text x="62" y="391" fill="#123A6B">reasons shown for every forecast</text>
+    <text x="532" y="370" fill="#3E2463">Rain moved to the right place +</text>
+    <text x="532" y="391" fill="#3E2463">calibrated heavy-rain probability</text>
+    <text x="532" y="412" fill="#3E2463">for every district</text>
+    <text x="1002" y="370" fill="#1B4D1E">District tables &amp; warning colours</text>
+    <text x="1002" y="391" fill="#1B4D1E">for Days 1 to 5, ready to use</text>
+    <text x="1472" y="370" fill="#6B4200">Fewer missed events, fewer false</text>
+    <text x="1472" y="391" fill="#6B4200">alarms, verified every day</text>
+  </g>
+  <g>
+    <rect x="1002" y="424" width="26" height="12" rx="2" fill="#43A047"/>
+    <rect x="1032" y="424" width="26" height="12" rx="2" fill="#F2C200"/>
+    <rect x="1062" y="424" width="26" height="12" rx="2" fill="#EF7D00"/>
+    <rect x="1092" y="424" width="26" height="12" rx="2" fill="#D32F2F"/>
+  </g>
+
+  <!-- ============ B. FEATURES x IMPACT MATRIX ============ -->
+  <text x="30" y="492" font-size="14" font-weight="700" letter-spacing="1.5" fill="#607D8B">WHAT EACH FEATURE CHANGES</text>
+  <line x1="286" y1="487" x2="1890" y2="487" stroke="#CFD8DC" stroke-width="1.5"/>
+
+  <g clip-path="url(#tbl)">
+    <!-- header -->
+    <rect x="30" y="502" width="330" height="44" fill="#37474F"/>
+    <rect x="360" y="502" width="510" height="44" fill="#1F5FAD"/>
+    <rect x="870" y="502" width="510" height="44" fill="#E08E0B"/>
+    <rect x="1380" y="502" width="510" height="44" fill="#2E7D32"/>
+    <!-- rows -->
+    <rect x="30" y="546" width="330" height="372" fill="#ECEFF1"/>
+    <rect x="360" y="546" width="510" height="372" fill="#F4F8FD"/>
+    <rect x="870" y="546" width="510" height="372" fill="#FEF9F0"/>
+    <rect x="1380" y="546" width="510" height="372" fill="#F3F9F3"/>
+    <g fill="#FFFFFF" opacity="0.65">
+      <rect x="30" y="608" width="1860" height="62"/>
+      <rect x="30" y="732" width="1860" height="62"/>
+      <rect x="30" y="856" width="1860" height="62"/>
+    </g>
+    <g stroke="#DDE3E7" stroke-width="1.2">
+      <line x1="30" y1="608" x2="1890" y2="608"/><line x1="30" y1="670" x2="1890" y2="670"/>
+      <line x1="30" y1="732" x2="1890" y2="732"/><line x1="30" y1="794" x2="1890" y2="794"/>
+      <line x1="30" y1="856" x2="1890" y2="856"/>
+      <line x1="360" y1="546" x2="360" y2="918"/><line x1="870" y1="546" x2="870" y2="918"/><line x1="1380" y1="546" x2="1380" y2="918"/>
+    </g>
+  </g>
+  <rect x="30" y="502" width="1860" height="416" rx="12" fill="none" stroke="#CFD8DC" stroke-width="1.5"/>
+
+  <!-- header labels + icons -->
+  <text x="54" y="530" font-size="15" font-weight="700" letter-spacing="1.2" fill="#FFFFFF">FEATURE</text>
+  <g fill="#FFFFFF">
+    <circle cx="390" cy="518" r="5"/><path d="M381,534 a9,8 0 0 1 18,0 z"/>
+    <circle cx="404" cy="521" r="4"/><path d="M397,535 a7,6 0 0 1 14,0 z"/>
+  </g>
+  <text x="422" y="530" font-size="15" font-weight="700" letter-spacing="1.2" fill="#FFFFFF">SOCIAL IMPACT</text>
+  <text x="900" y="532" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">₹</text>
+  <text x="920" y="530" font-size="15" font-weight="700" letter-spacing="1.2" fill="#FFFFFF">ECONOMIC BENEFITS</text>
+  <path d="M1400,534 C1400,520 1410,515 1420,514 C1420,526 1414,533 1400,534 Z" fill="#FFFFFF"/>
+  <line x1="1400" y1="534" x2="1412" y2="522" stroke="#2E7D32" stroke-width="1.5"/>
+  <text x="1432" y="530" font-size="15" font-weight="700" letter-spacing="1.2" fill="#FFFFFF">ENVIRONMENTAL BENEFITS</text>
+
+  <!-- feature names -->
+  <g font-size="15.5" font-weight="700" fill="#263238">
+    <text x="50" y="583">Regime-aware correction</text>
+    <text x="50" y="645">Rain in the right place (U-Net)</text>
+    <text x="50" y="707">Heavy-rain probabilities</text>
+    <text x="50" y="769">District warning colours</text>
+    <text x="50" y="831">Explainable &amp; verified daily</text>
+    <text x="50" y="893">Lightweight &amp; self-improving</text>
+  </g>
+
+  <!-- cells -->
+  <g font-size="14.5" fill="#333333">
+    <text x="380" y="583"><tspan font-weight="700" fill="#123A6B">More reliable warnings</tspan>, more public trust</text>
+    <text x="380" y="645"><tspan font-weight="700" fill="#123A6B">The right districts</tspan> get warned</text>
+    <text x="380" y="707"><tspan font-weight="700" fill="#123A6B">Earlier evacuations</tspan>, lives saved</text>
+    <text x="380" y="769"><tspan font-weight="700" fill="#123A6B">Easy to act on</tspan> for officials and the public</text>
+    <text x="380" y="831"><tspan font-weight="700" fill="#123A6B">Accountability</tspan> and trust in warnings</text>
+    <text x="380" y="893"><tspan font-weight="700" fill="#123A6B">Lasting benefit</tspan>, not a one-off study</text>
+
+    <text x="890" y="583"><tspan font-weight="700" fill="#8A5300">Fewer wasted</tspan> emergency mobilisations</text>
+    <text x="890" y="645"><tspan font-weight="700" fill="#8A5300">Rescue teams &amp; resources</tspan> sent where needed</text>
+    <text x="890" y="707"><tspan font-weight="700" fill="#8A5300">Risk-based decisions</tspan>: reservoirs, insurance, logistics</text>
+    <text x="890" y="769"><tspan font-weight="700" fill="#8A5300">Farmers protect crops</tspan> &amp; inputs before heavy rain</text>
+    <text x="890" y="831"><tspan font-weight="700" fill="#8A5300">Measurable return</tspan> on forecast investment</text>
+    <text x="890" y="893"><tspan font-weight="700" fill="#8A5300">Low cost</tspan>: open-source on existing hardware</text>
+
+    <text x="1400" y="583"><tspan font-weight="700" fill="#1B4D1E">Better water-resource</tspan> planning</text>
+    <text x="1400" y="645"><tspan font-weight="700" fill="#1B4D1E">Targeted action</tspan> in fragile hills (landslides, erosion)</text>
+    <text x="1400" y="707"><tspan font-weight="700" fill="#1B4D1E">Planned dam releases</tspan> cut downstream flood damage</text>
+    <text x="1400" y="769"><tspan font-weight="700" fill="#1B4D1E">Less fertiliser &amp; pesticide</tspan> washed into rivers</text>
+    <text x="1400" y="831"><tspan font-weight="700" fill="#1B4D1E">Long-term record</tspan> of changing rain extremes</text>
+    <text x="1400" y="893"><tspan font-weight="700" fill="#1B4D1E">Small compute</tspan> &amp; energy footprint</text>
+  </g>
+
+  <!-- ============ C. WHY IT MATTERS ============ -->
+  <rect x="30" y="934" width="1860" height="118" rx="12" fill="#1B3A57"/>
+  <text x="62" y="962" font-size="12.5" font-weight="700" letter-spacing="2" fill="#FFB74D">WHY IT MATTERS</text>
+  <text x="62" y="1026" font-size="56" font-weight="800" fill="#FFB74D">~3×</text>
+  <text x="200" y="996" font-size="17" font-weight="700" fill="#FFFFFF">rise in widespread extreme-rain events</text>
+  <text x="200" y="1018" font-size="17" font-weight="700" fill="#FFFFFF">over central India since 1950</text>
+  <text x="200" y="1040" font-size="12.5" fill="#B0C4D8">Roxy et al., Nature Communications (2017)</text>
+  <line x1="880" y1="954" x2="880" y2="1032" stroke="#3E5C78" stroke-width="2"/>
+  <text x="920" y="980" font-size="16" fill="#DCE6F0">Kerala floods (2018) · Wayanad landslides (2024)</text>
+  <text x="920" y="1008" font-size="19" font-weight="700" fill="#FFB74D">The costliest forecast errors are in heavy rain,</text>
+  <text x="920" y="1034" font-size="19" font-weight="700" fill="#FFFFFF">exactly where our system focuses.</text>
+</svg>

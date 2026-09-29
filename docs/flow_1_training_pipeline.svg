@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Segoe UI, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+<rect width="1600" height="900" fill="white"/>
+<text x="30" y="44" font-size="28" font-weight="700" fill="#222">Pre-training pipeline (offline)</text>
+<text x="30" y="68" font-size="15" fill="#555">Stage A: train the regime classifier on labels.  Stage B: train one U-Net per regime on that regime's days.  Then freeze both.</text>
+<rect x="30" y="100" width="280" height="92" rx="8" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2"/>
+<text x="170.0" y="125" text-anchor="middle" font-size="17" font-weight="700" fill="#222">GFS 0.25° forecast</text>
+<text x="170.0" y="145" text-anchor="middle" font-size="15" fill="#333">rain · u850 · v850 · MSLP</text>
+<text x="170.0" y="165" text-anchor="middle" font-size="15" fill="#333">00Z · Day-1/2/3 · JJAS 2021–25</text>
+<rect x="30" y="240" width="280" height="80" rx="8" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2"/>
+<text x="170.0" y="265" text-anchor="middle" font-size="17" font-weight="700" fill="#222">IMD 0.25° daily rain</text>
+<text x="170.0" y="285" text-anchor="middle" font-size="15" fill="#333">ground truth · 129 × 135</text>
+<rect x="30" y="365" width="280" height="80" rx="8" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2"/>
+<text x="170.0" y="390" text-anchor="middle" font-size="17" font-weight="700" fill="#222">DEM (SRTM 90 m)</text>
+<text x="170.0" y="410" text-anchor="middle" font-size="15" fill="#333">GeoTIFF tiles</text>
+<rect x="350" y="100" width="320" height="92" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="510.0" y="125" text-anchor="middle" font-size="17" font-weight="700" fill="#222">BOX 1 · NWP alignment</text>
+<text x="510.0" y="145" text-anchor="middle" font-size="15" fill="#333">24-h totals on IMD day (fxx 3→27)</text>
+<text x="510.0" y="165" text-anchor="middle" font-size="15" fill="#333">bilinear regrid → 129 × 135</text>
+<rect x="350" y="365" width="320" height="80" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="510.0" y="390" text-anchor="middle" font-size="17" font-weight="700" fill="#222">BOX 2 · Terrain engine</text>
+<text x="510.0" y="410" text-anchor="middle" font-size="15" fill="#333">block-average 90 m → 25 km</text>
+<text x="510.0" y="430" text-anchor="middle" font-size="15" fill="#333">elevation · land-sea mask</text>
+<rect x="350" y="500" width="320" height="128" rx="8" fill="#FFF6CC" stroke="#B8960C" stroke-width="2"/>
+<text x="510.0" y="525" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Ground truth + regime labels</text>
+<text x="510.0" y="545" text-anchor="middle" font-size="15" fill="#333">y = IMD rain (mm)</text>
+<text x="510.0" y="565" text-anchor="middle" font-size="15" fill="#333">Rajeevan index → Active / Break</text>
+<text x="510.0" y="585" text-anchor="middle" font-size="15" fill="#333">MSLP low → Depression · else Coastal/Oro</text>
+<rect x="710" y="185" width="260" height="92" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="840.0" y="210" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Concat + z-score</text>
+<text x="840.0" y="230" text-anchor="middle" font-size="15" fill="#333">μ, σ from train years only</text>
+<text x="840.0" y="250" text-anchor="middle" font-size="15" fill="#333">saved for live use</text>
+<rect x="710" y="345" width="260" height="80" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="840.0" y="370" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Unified tensor</text>
+<text x="840.0" y="390" text-anchor="middle" font-size="15" fill="#333">6 × 129 × 135</text>
+<rect x="1010" y="100" width="560" height="105" rx="8" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="1290.0" y="125" text-anchor="middle" font-size="17" font-weight="700" fill="#222">STAGE A · Regime classifier (CNN)</text>
+<text x="1290.0" y="145" text-anchor="middle" font-size="15" fill="#333">input u850, v850, MSLP · [Conv→BN→ReLU→MaxPool] × 4 → softmax(4)</text>
+<text x="1290.0" y="165" text-anchor="middle" font-size="15" fill="#333">class-weighted cross-entropy</text>
+<rect x="1010" y="235" width="560" height="265" rx="10" fill="#FAFAFA" stroke="#999999" stroke-width="1.5" stroke-dasharray="7,5"/>
+<text x="1022" y="255" font-size="15" font-weight="700" fill="#555">STAGE B · Four regime-specific U-Nets (hard-routed)</text>
+<rect x="1030" y="270" width="255" height="92" rx="8" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="1157.5" y="295" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Active U-Net</text>
+<text x="1157.5" y="315" text-anchor="middle" font-size="15" fill="#333">3×3 conv</text>
+<text x="1157.5" y="335" text-anchor="middle" font-size="15" fill="#333">widespread rain</text>
+<rect x="1305" y="270" width="245" height="92" rx="8" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="1427.5" y="295" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Break U-Net</text>
+<text x="1427.5" y="315" text-anchor="middle" font-size="15" fill="#333">3×3 conv + L2</text>
+<text x="1427.5" y="335" text-anchor="middle" font-size="15" fill="#333">sparse / zero-rain</text>
+<rect x="1030" y="385" width="255" height="92" rx="8" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="1157.5" y="410" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Depression U-Net</text>
+<text x="1157.5" y="430" text-anchor="middle" font-size="15" fill="#333">7×7 kernels</text>
+<text x="1157.5" y="450" text-anchor="middle" font-size="15" fill="#333">synoptic-scale bands</text>
+<rect x="1305" y="385" width="245" height="92" rx="8" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="1427.5" y="410" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Coastal / Orographic U-Net</text>
+<text x="1427.5" y="430" text-anchor="middle" font-size="15" fill="#333">dense skip connections</text>
+<text x="1427.5" y="450" text-anchor="middle" font-size="15" fill="#333">ridges · coasts</text>
+<rect x="1010" y="540" width="265" height="105" rx="8" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="1142.5" y="565" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Output head (each expert)</text>
+<text x="1142.5" y="585" text-anchor="middle" font-size="15" fill="#333">ch0 rain mm (softplus)</text>
+<text x="1142.5" y="605" text-anchor="middle" font-size="15" fill="#333">ch1–3 P(&gt;64.5/115.5/204.4), sigmoid</text>
+<rect x="1300" y="540" width="270" height="105" rx="8" fill="#FDE3CC" stroke="#D2691E" stroke-width="2"/>
+<text x="1435.0" y="565" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Asymmetric loss</text>
+<text x="1435.0" y="585" text-anchor="middle" font-size="15" fill="#333">MSE + λ · penalty on missed &gt;64.5 mm</text>
+<text x="1435.0" y="605" text-anchor="middle" font-size="15" fill="#333">+ BCE on probabilities</text>
+<rect x="30" y="715" width="640" height="66" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="350.0" y="740" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Season split</text>
+<text x="350.0" y="760" text-anchor="middle" font-size="15" fill="#333">train 2021–23 · validate 2024 · test 2025</text>
+<rect x="710" y="715" width="560" height="66" rx="8" fill="#DDF3E0" stroke="#2E8B57" stroke-width="2"/>
+<text x="990.0" y="740" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Saved artifacts</text>
+<text x="990.0" y="760" text-anchor="middle" font-size="15" fill="#333">classifier.pt · 4 × unet_&lt;regime&gt;.pt · norm_stats.json</text>
+<rect x="1300" y="715" width="270" height="66" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2" stroke-dasharray="6,4"/>
+<text x="1435.0" y="740" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Optional warm start</text>
+<text x="1435.0" y="760" text-anchor="middle" font-size="15" fill="#333">init 4 experts from one shared U-Net</text>
+<path d="M310,146 L350,146" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M310,405 L350,405" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M670,146 L690,146 L690,231 L710,231" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="695" y="138" text-anchor="start" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">4 dynamic</text>
+<path d="M670,405 L690,405 L690,231" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="695" y="428" text-anchor="start" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">2 static</text>
+<path d="M840,277 L840,345" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M310,280 L330,280 L330,564 L350,564" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M970,385 L990,385 L990,152 L1010,152" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="985" y="270" text-anchor="end" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">u850 v850 MSLP</text>
+<path d="M970,385 L990,385 L990,430 L1010,430" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="995" y="452" text-anchor="start" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">all 6 ch</text>
+<path d="M670,564 L690,564 L690,675 L1585,675 L1585,152 L1570,152" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="900" y="670" text-anchor="middle" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">regime label</text>
+<path d="M510,628 L510,695 L1435,695 L1435,645" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="1200" y="709" text-anchor="middle" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">y target</text>
+<path d="M1290,500 L1290,540" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="1300" y="525" text-anchor="start" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">ŷ</text>
+<path d="M1275,592 L1300,592" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M1435,540 L1435,502" fill="none" stroke="#333" stroke-width="2.2" stroke-dasharray="7,5" marker-end="url(#arr)"/>
+<text x="1445" y="525" text-anchor="start" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">backprop</text>
+<rect x="30" y="810" width="20" height="14" rx="3" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2"/>
+<text x="57" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">data</text>
+<rect x="195" y="810" width="20" height="14" rx="3" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="222" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">processing</text>
+<rect x="360" y="810" width="20" height="14" rx="3" fill="#FFF6CC" stroke="#B8960C" stroke-width="2"/>
+<text x="387" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">labels / truth</text>
+<rect x="525" y="810" width="20" height="14" rx="3" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="552" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">neural network</text>
+<rect x="690" y="810" width="20" height="14" rx="3" fill="#FDE3CC" stroke="#D2691E" stroke-width="2"/>
+<text x="717" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">loss</text>
+<rect x="855" y="810" width="20" height="14" rx="3" fill="#DDF3E0" stroke="#2E8B57" stroke-width="2"/>
+<text x="882" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">artifact</text>
+</svg>

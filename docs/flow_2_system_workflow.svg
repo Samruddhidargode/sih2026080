@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Segoe UI, Arial, sans-serif">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+<rect width="1600" height="900" fill="white"/>
+<text x="30" y="44" font-size="28" font-weight="700" fill="#222">System workflow (operational, daily)</text>
+<text x="30" y="68" font-size="15" fill="#555">Same preprocessing, frozen weights.  Forecast product published immediately; verification runs when IMD observations arrive next day.</text>
+<rect x="30" y="100" width="250" height="92" rx="8" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2"/>
+<text x="155.0" y="125" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Today's 00Z GFS</text>
+<text x="155.0" y="145" text-anchor="middle" font-size="15" fill="#333">rain · u850 · v850 · MSLP</text>
+<text x="155.0" y="165" text-anchor="middle" font-size="15" fill="#333">Day-1 / 2 / 3</text>
+<rect x="30" y="240" width="250" height="70" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="155.0" y="265" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Daily scheduler</text>
+<text x="155.0" y="285" text-anchor="middle" font-size="15" fill="#333">≈ 06:30 IST · &lt; 2 min</text>
+<rect x="310" y="100" width="300" height="92" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="460.0" y="125" text-anchor="middle" font-size="17" font-weight="700" fill="#222">BOX 1 · preprocessing</text>
+<text x="460.0" y="145" text-anchor="middle" font-size="15" fill="#333">24-h totals · regrid</text>
+<text x="460.0" y="165" text-anchor="middle" font-size="15" fill="#333">z-score with saved μ, σ</text>
+<rect x="310" y="240" width="270" height="70" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="445.0" y="265" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Cached terrain</text>
+<text x="445.0" y="285" text-anchor="middle" font-size="15" fill="#333">elevation · land mask</text>
+<rect x="640" y="100" width="250" height="92" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="765.0" y="125" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Unified tensor</text>
+<text x="765.0" y="145" text-anchor="middle" font-size="15" fill="#333">6 × 129 × 135</text>
+<rect x="920" y="100" width="300" height="105" rx="8" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="1070.0" y="125" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Regime classifier (frozen)</text>
+<text x="1070.0" y="145" text-anchor="middle" font-size="15" fill="#333">softmax → e.g. Depression 0.81</text>
+<text x="1070.0" y="165" text-anchor="middle" font-size="15" fill="#333">argmax → regime of the day</text>
+<rect x="1250" y="100" width="320" height="105" rx="8" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="1410.0" y="125" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Selected U-Net (frozen)</text>
+<text x="1410.0" y="145" text-anchor="middle" font-size="15" fill="#333">one expert per regime</text>
+<text x="1410.0" y="165" text-anchor="middle" font-size="15" fill="#333">out: rain + 3 probabilities</text>
+<rect x="1250" y="260" width="320" height="92" rx="8" fill="#DDF3E0" stroke="#2E8B57" stroke-width="2"/>
+<text x="1410.0" y="285" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Grid products</text>
+<text x="1410.0" y="305" text-anchor="middle" font-size="15" fill="#333">corrected rain (mm)</text>
+<text x="1410.0" y="325" text-anchor="middle" font-size="15" fill="#333">P(&gt;64.5 / 115.5 / 204.4)</text>
+<rect x="610" y="260" width="290" height="92" rx="8" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="755.0" y="285" text-anchor="middle" font-size="17" font-weight="700" fill="#222">District aggregation</text>
+<text x="755.0" y="305" text-anchor="middle" font-size="15" fill="#333">shapefile · mean &amp; max</text>
+<text x="755.0" y="325" text-anchor="middle" font-size="15" fill="#333">alert colour from P</text>
+<rect x="610" y="420" width="960" height="105" rx="8" fill="#DDF3E0" stroke="#2E8B57" stroke-width="2"/>
+<text x="1090.0" y="445" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Dashboard (Streamlit + Folium)</text>
+<text x="1090.0" y="465" text-anchor="middle" font-size="15" fill="#333">date &amp; lead · Raw / Corrected / Observed toggle · district map &amp; table</text>
+<text x="1090.0" y="485" text-anchor="middle" font-size="15" fill="#333">regime badge · metrics scoreboard</text>
+<rect x="30" y="640" width="250" height="80" rx="8" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2"/>
+<text x="155.0" y="665" text-anchor="middle" font-size="17" font-weight="700" fill="#222">IMD observations</text>
+<text x="155.0" y="685" text-anchor="middle" font-size="15" fill="#333">next day · 0.25°</text>
+<rect x="640" y="600" width="560" height="128" rx="8" fill="#FDE3CC" stroke="#D2691E" stroke-width="2"/>
+<text x="920.0" y="625" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Verification engine (post-event)</text>
+<text x="920.0" y="645" text-anchor="middle" font-size="15" fill="#333">Raw vs Corrected vs IMD @ 64.5 / 115.5 / 204.4 mm</text>
+<text x="920.0" y="665" text-anchor="middle" font-size="15" fill="#333">RMSE · ETS · CSI · POD · FAR · FSS</text>
+<text x="920.0" y="685" text-anchor="middle" font-size="15" fill="#333">by regime and lead</text>
+<rect x="1250" y="600" width="320" height="128" rx="8" fill="#DDF3E0" stroke="#2E8B57" stroke-width="2"/>
+<text x="1410.0" y="625" text-anchor="middle" font-size="17" font-weight="700" fill="#222">Verification products</text>
+<text x="1410.0" y="645" text-anchor="middle" font-size="15" fill="#333">comparison table</text>
+<text x="1410.0" y="665" text-anchor="middle" font-size="15" fill="#333">report (HTML / PDF)</text>
+<path d="M280,146 L310,146" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M610,146 L640,146" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M580,275 L625,275 L625,170 L640,170" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M890,146 L920,146" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M890,170 L905,170 L905,225 L1235,225 L1235,170 L1250,170" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="1070" y="221" text-anchor="middle" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">all 6 ch</text>
+<path d="M1220,146 L1250,146" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="1235" y="136" text-anchor="middle" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">regime</text>
+<path d="M1410,205 L1410,260" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M1250,306 L900,306" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="1130" y="299" text-anchor="middle" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">grid → district</text>
+<path d="M755,352 L755,420" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M1410,352 L1410,420" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M1070,205 L1070,240 L960,240 L960,420" fill="none" stroke="#333" stroke-width="2.2" stroke-dasharray="7,5" marker-end="url(#arr)"/>
+<text x="968" y="395" text-anchor="start" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">regime badge</text>
+<path d="M1570,330 L1585,330 L1585,570 L1100,570 L1100,600" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="1240" y="564" text-anchor="middle" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">corrected</text>
+<path d="M1300,600 L1300,525" fill="none" stroke="#333" stroke-width="2.2" stroke-dasharray="7,5" marker-end="url(#arr)"/>
+<text x="1308" y="555" text-anchor="start" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">scoreboard</text>
+<path d="M460,192 L460,215 L295,215 L295,650 L640,650" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="300" y="480" text-anchor="start" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">raw NWP (baseline)</text>
+<path d="M280,690 L640,690" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="460" y="683" text-anchor="middle" font-size="13" font-style="italic" fill="#444" paint-order="stroke" stroke="white" stroke-width="5">truth</text>
+<path d="M1200,664 L1250,664" fill="none" stroke="#333" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="30" y="810" width="20" height="14" rx="3" fill="#DCEBFA" stroke="#2F6DB5" stroke-width="2"/>
+<text x="57" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">input</text>
+<rect x="195" y="810" width="20" height="14" rx="3" fill="#EFEFEF" stroke="#666666" stroke-width="2"/>
+<text x="222" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">processing</text>
+<rect x="360" y="810" width="20" height="14" rx="3" fill="#EBDDF5" stroke="#7B3FA0" stroke-width="2"/>
+<text x="387" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">frozen model</text>
+<rect x="525" y="810" width="20" height="14" rx="3" fill="#DDF3E0" stroke="#2E8B57" stroke-width="2"/>
+<text x="552" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">deliverable</text>
+<rect x="690" y="810" width="20" height="14" rx="3" fill="#FDE3CC" stroke="#D2691E" stroke-width="2"/>
+<text x="717" y="822" font-size="13" font-weight="400" fill="#444" text-anchor="start">verification</text>
+</svg>

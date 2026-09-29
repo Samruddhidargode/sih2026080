@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+
+  <!-- TITLE -->
+  <text x="960" y="50" text-anchor="middle" font-size="30" font-weight="700" fill="#1A1A1A">Feasibility &amp; Viability</text>
+  <text x="960" y="82" text-anchor="middle" font-size="17" fill="#555555">Built on what India already has: data, forecast models and infrastructure</text>
+
+  <!-- ============ A. WHY IT'S FEASIBLE ============ -->
+  <text x="30" y="114" font-size="14" font-weight="700" letter-spacing="1.5" fill="#607D8B">WHY IT'S FEASIBLE</text>
+  <line x1="200" y1="109" x2="1890" y2="109" stroke="#CFD8DC" stroke-width="1.5"/>
+
+  <!-- pillar cards -->
+  <g stroke-width="2" fill="#FFFFFF">
+    <rect x="30" y="124" width="604" height="228" rx="12" stroke="#1F5FAD"/>
+    <rect x="658" y="124" width="604" height="228" rx="12" stroke="#0F7C7C"/>
+    <rect x="1286" y="124" width="604" height="228" rx="12" stroke="#2E7D32"/>
+  </g>
+  <rect x="30" y="124" width="604" height="44" rx="12" fill="#1F5FAD"/><rect x="30" y="146" width="604" height="22" fill="#1F5FAD"/>
+  <rect x="658" y="124" width="604" height="44" rx="12" fill="#0F7C7C"/><rect x="658" y="146" width="604" height="22" fill="#0F7C7C"/>
+  <rect x="1286" y="124" width="604" height="44" rx="12" fill="#2E7D32"/><rect x="1286" y="146" width="604" height="22" fill="#2E7D32"/>
+  <g fill="#FFFFFF"><circle cx="60" cy="146" r="12"/><circle cx="688" cy="146" r="12"/><circle cx="1316" cy="146" r="12"/></g>
+  <g fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="54,146 58,150 66,141" stroke="#1F5FAD"/>
+    <polyline points="682,146 686,150 694,141" stroke="#0F7C7C"/>
+    <polyline points="1310,146 1314,150 1322,141" stroke="#2E7D32"/>
+  </g>
+  <g font-size="17" font-weight="700" fill="#FFFFFF">
+    <text x="82" y="152">Technically proven</text>
+    <text x="710" y="152">Data already exists</text>
+    <text x="1338" y="152">Operationally &amp; economically viable</text>
+  </g>
+
+  <!-- bullets -->
+  <g fill="#1F5FAD"><circle cx="56" cy="191" r="4"/><circle cx="56" cy="245" r="4"/><circle cx="56" cy="299" r="4"/></g>
+  <g fill="#0F7C7C"><circle cx="684" cy="191" r="4"/><circle cx="684" cy="245" r="4"/><circle cx="684" cy="299" r="4"/></g>
+  <g fill="#2E7D32"><circle cx="1312" cy="191" r="4"/><circle cx="1312" cy="245" r="4"/><circle cx="1312" cy="299" r="4"/></g>
+  <g font-size="15.5" font-weight="700" fill="#1A1A1A">
+    <text x="70" y="196">Published, well-established methods</text>
+    <text x="70" y="250">Working prototype already built</text>
+    <text x="70" y="304">Forecast is never missing</text>
+    <text x="698" y="196">IMD 0.25° gridded rainfall, 1901 to present</text>
+    <text x="698" y="250">IMD / NCMRWF forecast archives + IMDAA</text>
+    <text x="698" y="304">Only a data-sharing MoU is needed</text>
+    <text x="1326" y="196">Fits IMD's daily forecast cycle</text>
+    <text x="1326" y="250">Runs on-premise on modest hardware</text>
+    <text x="1326" y="304">Open-source, zero licence cost</text>
+  </g>
+  <g font-size="13.5" fill="#555555">
+    <text x="70" y="217">quantile mapping · gradient boosting · U-Net · FSS verification</text>
+    <text x="70" y="271">runs end-to-end on open data (GFS + IMD rainfall)</text>
+    <text x="70" y="325">a fallback at every stage keeps products flowing</text>
+    <text x="698" y="217">over a century of daily observed rainfall as ground truth</text>
+    <text x="698" y="271">decades of model forecasts and reanalysis to train on</text>
+    <text x="698" y="325">no new observing network or instruments required</text>
+    <text x="1326" y="217">district products ~60–90 min after each model run</text>
+    <text x="1326" y="271">CPU nodes + 1–2 GPUs, inside the IMD / NCMRWF network</text>
+    <text x="1326" y="325">run by a small team: 1–2 ML engineers + a meteorologist</text>
+  </g>
+
+  <!-- ============ B. SCALING ROADMAP ============ -->
+  <text x="30" y="382" font-size="14" font-weight="700" letter-spacing="1.5" fill="#607D8B">HOW IT SCALES PAST THE HACKATHON</text>
+  <line x1="355" y1="377" x2="1890" y2="377" stroke="#CFD8DC" stroke-width="1.5"/>
+
+  <polygon points="30,394 470,394 500,447 470,500 30,500" fill="#E2D5F3"/>
+  <polygon points="490,394 930,394 960,447 930,500 490,500 520,447" fill="#C3AEE3"/>
+  <polygon points="950,394 1390,394 1420,447 1390,500 950,500 980,447" fill="#8E6CC7"/>
+  <polygon points="1410,394 1860,394 1890,447 1860,500 1410,500 1440,447" fill="#6A3FA0"/>
+  <g text-anchor="middle">
+    <text x="262" y="418" font-size="12" font-weight="700" letter-spacing="1.5" fill="#6A3FA0">HACKATHON · NOW</text>
+    <text x="262" y="444" font-size="17" font-weight="700" fill="#3E2463">Working prototype</text>
+    <text x="262" y="467" font-size="13.5" fill="#3E2463">open data · end-to-end demo</text>
+    <text x="262" y="486" font-size="13.5" fill="#3E2463">regime → correction → district map</text>
+
+    <text x="728" y="418" font-size="12" font-weight="700" letter-spacing="1.5" fill="#4A2C78">PILOT · 1 MONSOON SEASON</text>
+    <text x="728" y="444" font-size="17" font-weight="700" fill="#2D1850">Shadow run at IMD</text>
+    <text x="728" y="467" font-size="13.5" fill="#2D1850">high-risk regions first:</text>
+    <text x="728" y="486" font-size="13.5" fill="#2D1850">Western Ghats · central India</text>
+
+    <text x="1188" y="418" font-size="12" font-weight="700" letter-spacing="1.5" fill="#F3EEFA">NATIONAL · YEAR 2</text>
+    <text x="1188" y="444" font-size="17" font-weight="700" fill="#FFFFFF">All ~780 districts</text>
+    <text x="1188" y="467" font-size="13.5" fill="#FFFFFF">Days 1–5 · ensemble heavy-rain</text>
+    <text x="1188" y="486" font-size="13.5" fill="#FFFFFF">probabilities · daily operations</text>
+
+    <text x="1652" y="418" font-size="12" font-weight="700" letter-spacing="1.5" fill="#F3EEFA">EXTENDED · YEAR 3+</text>
+    <text x="1652" y="444" font-size="17" font-weight="700" fill="#FFFFFF">More models &amp; variables</text>
+    <text x="1652" y="467" font-size="13.5" fill="#FFFFFF">NCUM · AI weather models</text>
+    <text x="1652" y="486" font-size="13.5" fill="#FFFFFF">temperature · wind · nowcasting</text>
+  </g>
+  <text x="960" y="530" text-anchor="middle" font-size="15" font-style="italic" font-weight="600" fill="#6A3FA0">Scales by adding regions, models and variables: retrained, never rebuilt.</text>
+
+  <!-- ============ C. RISKS & STRATEGIES ============ -->
+  <text x="30" y="562" font-size="14" font-weight="700" letter-spacing="1.5" fill="#607D8B">RISKS &amp; MITIGATION STRATEGIES</text>
+  <line x1="312" y1="557" x2="1890" y2="557" stroke="#CFD8DC" stroke-width="1.5"/>
+
+  <!-- card frames -->
+  <g fill="#F1F8F1" stroke="#CFD8DC" stroke-width="1.5">
+    <rect x="30" y="574" width="604" height="112" rx="12"/>
+    <rect x="658" y="574" width="604" height="112" rx="12"/>
+    <rect x="1286" y="574" width="604" height="112" rx="12"/>
+    <rect x="30" y="700" width="604" height="112" rx="12"/>
+    <rect x="658" y="700" width="604" height="112" rx="12"/>
+    <rect x="1286" y="700" width="604" height="112" rx="12"/>
+  </g>
+  <!-- risk halves -->
+  <g fill="#FDECEA">
+    <rect x="31" y="575" width="250" height="110" rx="11"/><rect x="260" y="575" width="21" height="110"/>
+    <rect x="659" y="575" width="250" height="110" rx="11"/><rect x="888" y="575" width="21" height="110"/>
+    <rect x="1287" y="575" width="250" height="110" rx="11"/><rect x="1516" y="575" width="21" height="110"/>
+    <rect x="31" y="701" width="250" height="110" rx="11"/><rect x="260" y="701" width="21" height="110"/>
+    <rect x="659" y="701" width="250" height="110" rx="11"/><rect x="888" y="701" width="21" height="110"/>
+    <rect x="1287" y="701" width="250" height="110" rx="11"/><rect x="1516" y="701" width="21" height="110"/>
+  </g>
+  <g stroke="#555555" stroke-width="2.5" marker-end="url(#arr)">
+    <line x1="286" y1="630" x2="312" y2="630"/><line x1="914" y1="630" x2="940" y2="630"/><line x1="1542" y1="630" x2="1568" y2="630"/>
+    <line x1="286" y1="756" x2="312" y2="756"/><line x1="914" y1="756" x2="940" y2="756"/><line x1="1542" y1="756" x2="1568" y2="756"/>
+  </g>
+  <g font-size="11" font-weight="700" letter-spacing="1.2">
+    <g fill="#C62828">
+      <text x="50" y="600">RISK</text><text x="678" y="600">RISK</text><text x="1306" y="600">RISK</text>
+      <text x="50" y="726">RISK</text><text x="678" y="726">RISK</text><text x="1306" y="726">RISK</text>
+    </g>
+    <g fill="#2E7D32">
+      <text x="326" y="600">STRATEGY</text><text x="954" y="600">STRATEGY</text><text x="1582" y="600">STRATEGY</text>
+      <text x="326" y="726">STRATEGY</text><text x="954" y="726">STRATEGY</text><text x="1582" y="726">STRATEGY</text>
+    </g>
+  </g>
+  <g font-size="15.5" font-weight="700" fill="#7F1D1D">
+    <text x="50" y="628">Delay in official</text><text x="50" y="648">data access</text>
+    <text x="678" y="628">NWP model upgrades</text><text x="678" y="648">change the errors</text>
+    <text x="1306" y="628">Too few extreme events</text><text x="1306" y="648">to learn from</text>
+    <text x="50" y="754">Wrong weather regime</text><text x="50" y="774">detected</text>
+    <text x="678" y="754">Forecaster trust</text><text x="678" y="774">&amp; adoption</text>
+    <text x="1306" y="754">Forecast skill drifts</text><text x="1306" y="774">over time</text>
+  </g>
+  <g font-size="14" fill="#1B4D1E">
+    <text x="326" y="626">Early data-sharing MoU; keep</text><text x="326" y="645">building on open data meanwhile</text>
+    <text x="954" y="626">Version tracking, parallel-run</text><text x="954" y="645">retraining, automatic fallback</text>
+    <text x="1582" y="626">India-wide pooled learning +</text><text x="1582" y="645">extreme-value (GPD) tail</text>
+    <text x="326" y="752">Soft blending by regime probability</text><text x="326" y="771">+ unusual-pattern alert</text>
+    <text x="954" y="752">Explainable outputs, a shadow season,</text><text x="954" y="771">forecasters in the acceptance gate</text>
+    <text x="1582" y="752">Daily self-verification triggers</text><text x="1582" y="771">automatic retraining</text>
+  </g>
+
+  <!-- ============ D. OPERATIONAL VIABILITY TILES ============ -->
+  <text x="30" y="842" font-size="14" font-weight="700" letter-spacing="1.5" fill="#607D8B">OPERATIONAL VIABILITY AT A GLANCE</text>
+  <line x1="362" y1="837" x2="1890" y2="837" stroke="#CFD8DC" stroke-width="1.5"/>
+  <g fill="#F3F5F7">
+    <rect x="30" y="852" width="450" height="112" rx="12"/>
+    <rect x="500" y="852" width="450" height="112" rx="12"/>
+    <rect x="970" y="852" width="450" height="112" rx="12"/>
+    <rect x="1440" y="852" width="450" height="112" rx="12"/>
+  </g>
+  <circle cx="90" cy="908" r="32" fill="#1F5FAD"/>
+  <circle cx="90" cy="908" r="16" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+  <polyline points="90,898 90,908 97,913" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="560" cy="908" r="32" fill="#2E7D32"/>
+  <text x="560" y="920" text-anchor="middle" font-size="32" font-weight="700" fill="#FFFFFF">₹</text>
+  <circle cx="1030" cy="908" r="32" fill="#6A3FA0"/>
+  <rect x="1016" y="894" width="28" height="28" rx="4" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+  <rect x="1024" y="902" width="12" height="12" fill="#FFFFFF"/>
+  <g stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round">
+    <line x1="1023" y1="888" x2="1023" y2="893"/><line x1="1030" y1="888" x2="1030" y2="893"/><line x1="1037" y1="888" x2="1037" y2="893"/>
+    <line x1="1023" y1="923" x2="1023" y2="928"/><line x1="1030" y1="923" x2="1030" y2="928"/><line x1="1037" y1="923" x2="1037" y2="928"/>
+  </g>
+  <circle cx="1500" cy="908" r="32" fill="#E08E0B"/>
+  <path d="M1500,892 L1514,897 V908 C1514,917 1508,922 1500,926 C1492,922 1486,917 1486,908 V897 Z" fill="#FFFFFF"/>
+  <polyline points="1494,908 1499,913 1507,903" fill="none" stroke="#E08E0B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-size="28" font-weight="700" fill="#1A1A1A">
+    <text x="140" y="904">~60–90 min</text>
+    <text x="610" y="904">₹0 licence cost</text>
+    <text x="1080" y="904">1–2 GPUs</text>
+    <text x="1550" y="904">Never missing</text>
+  </g>
+  <g font-size="14" fill="#555555">
+    <text x="140" y="930">from model run to district forecast,</text>
+    <text x="140" y="948">every 00 &amp; 12 UTC run</text>
+    <text x="610" y="930">100% open-source stack,</text>
+    <text x="610" y="948">runs on existing IMD servers</text>
+    <text x="1080" y="930">plus CPU nodes, on-premise;</text>
+    <text x="1080" y="948">no public cloud needed</text>
+    <text x="1550" y="930">fallback at every stage:</text>
+    <text x="1550" y="948">worst case = raw forecast, flagged</text>
+  </g>
+
+  <!-- FOOTER -->
+  <rect x="30" y="980" width="1860" height="72" rx="12" fill="#1B3A57"/>
+  <text x="960" y="1023" text-anchor="middle" font-size="18" fill="#FFFFFF">Viable because it <tspan font-weight="700" fill="#FFB74D">adds intelligence on top of</tspan> IMD's existing models, data and hardware. It doesn't replace them.</text>
+</svg>

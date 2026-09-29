@@ -1,0 +1,65 @@
+# SIH26080 - Regime-Aware AI Post-Processing of Monsoon Rainfall Forecasts
+# Every script reads this file. Change paths/years here, not in code.
+
+paths:
+  raw: data/raw            # untouched downloads (GRIB, IMD .grd, DEM tiles, shapefiles)
+  interim: data/interim    # per-file NetCDF subsets on the master grid
+  processed: data/processed  # training-ready zarr + normalisation stats
+
+# Year-based split. NEVER split by random days: consecutive monsoon days are
+# strongly autocorrelated, so a random split leaks the test set into training
+# and inflates every metric. One full held-out season is the honest test.
+years:
+  train: [2023, 2024]      # overnight prototype: 2 seasons; extend to 2021-22 later
+  calib: []                # last 15% of training days (time-ordered) used for early stopping
+  test:  [2025]
+
+season:
+  months: [6, 7, 8, 9]     # JJAS - the SW monsoon
+
+gfs:
+  model: gfs
+  product: pgrb2.0p25      # 0.25 deg global - same spacing as the IMD grid
+  run_hour: 0              # 00Z run; IMD day = 03Z(D-1) -> 03Z(D), so 00Z run gives fxx 3..27 for Day-1
+  leads_days: [1]          # prototype: Day-1 only; add 2, 3 when download time allows
+  synoptic_offset_h: 12    # winds/MSLP taken at fxx = 24*(lead-1) + 12 (middle of the accumulation window)
+  variables:               # herbie search strings (regex on the GRIB inventory)
+    u850: ":UGRD:850 mb:"
+    v850: ":VGRD:850 mb:"
+    mslp: ":PRMSL:mean sea level:"
+  priority: [aws, google, nomads]   # NOAA Open Data on AWS first - it has the full 2021+ archive
+
+dem:
+  source: srtm_cgiar       # 90 m, 5x5 deg tiles, no login. Loader accepts any GeoTIFF (e.g. Cartosat).
+  tiles_dir: data/raw/dem
+  out: data/interim/terrain.nc
+
+districts:
+  source: gadm             # GADM 4.1 level-2 = districts. Swap for Survey-of-India shapefile for the demo.
+  path: data/raw/districts/gadm41_IND_2.json
+  name_col: NAME_2
+  state_col: NAME_1
+
+thresholds_mm:             # IMD official categories for 24-h rainfall
+  heavy: 64.5
+  very_heavy: 115.5
+  extremely_heavy: 204.4
+
+regimes:
+  # Rajeevan, Gadgil & Bhate (2010) core monsoon zone
+  core_zone: {lat_min: 18.0, lat_max: 28.0, lon_min: 65.0, lon_max: 88.0}
+  anomaly_sigma: 1.0       # |standardised anomaly| > 1 sigma ...
+  min_run_days: 3          # ... for >= 3 consecutive days = Active / Break
+  mslp_max_hpa: 1000.0     # depression: MSLP minimum must be at or below this
+  mslp_depth_hpa: 4.0      # ... and this much deeper than the surrounding 5x5 deg mean
+  # NOTE: this is a proxy for IMD's operational depression definition (closed isobar,
+  # winds 17-33 knots, tracked system) - it will over-flag weak monsoon-trough lows.
+  # Tighten mslp_max_hpa (e.g. 998) if the label count looks too high once the full
+  # season is labelled; cross-check against IMD's published depression dates if time allows.
+  classes: [Normal, Active, Break, Depression]
+
+training:
+  batch_size: 16
+  lr: 1.0e-3
+  epochs: 60
+  seed: 42
